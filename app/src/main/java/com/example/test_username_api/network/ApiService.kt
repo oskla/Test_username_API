@@ -5,8 +5,8 @@ import retrofit2.http.GET
 
 interface ApiService {
 
-    @GET
-    suspend fun fetchAllUsers(): Result
+    @GET("api/?results=20")
+    suspend fun fetchAllUsers(): Result<List<Results>>
 
 
 }
