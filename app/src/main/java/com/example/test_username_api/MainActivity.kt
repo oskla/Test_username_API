@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.test_username_api.components.UserItem
 import com.example.test_username_api.ui.theme.Test_username_APITheme
 import com.example.test_username_api.viewmodel.UserViewModel
 
@@ -46,9 +47,7 @@ fun Greeting(userViewModel: UserViewModel) {
 
         userViewModel.resultsResponse?.let {
             itemsIndexed(items = it.results) { _, item ->
-                Text(text = item.email)
-
-
+                UserItem()
             }
         }
 
