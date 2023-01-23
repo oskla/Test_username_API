@@ -6,6 +6,7 @@ import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
+import com.example.test_username_api.model.Result as Result
 
 class Repo {
 
@@ -17,7 +18,7 @@ class Repo {
             .create(ApiService::class.java)
     }
 
-   suspend fun fetchAllUsersRetrofit(): Result<List<Results>> {
+   suspend fun fetchAllUsersRetrofit(): Result {
         return retrofit().fetchAllUsers()
     }
 

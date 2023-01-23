@@ -6,20 +6,24 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.test_username_api.model.Results
+import com.example.test_username_api.model.Result as Result
 import com.example.test_username_api.repo.Repo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class UserViewModel: ViewModel() {
 
-    var resultsResponse: List<Results>? by mutableStateOf(null)
-    var users: MutableList<Results>? by mutableStateOf(null)
+    var resultsResponse: Result? by mutableStateOf(null)
+
 
 
     fun setup() {
         viewModelScope.launch(Dispatchers.IO) {
             val response = Repo().fetchAllUsersRetrofit()
-            println(response)
+
+                for (user in response.results) {
+
+                }
 
             }
 
@@ -27,4 +31,3 @@ class UserViewModel: ViewModel() {
         }
     }
 
-}
