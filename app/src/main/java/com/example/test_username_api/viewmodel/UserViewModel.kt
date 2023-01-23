@@ -17,13 +17,13 @@ class UserViewModel: ViewModel() {
 
 
 
+
     fun setup() {
         viewModelScope.launch(Dispatchers.IO) {
             val response = Repo().fetchAllUsersRetrofit()
 
-                for (user in response.results) {
-
-                }
+                resultsResponse = response
+            println(response)
 
             }
 

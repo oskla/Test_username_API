@@ -43,12 +43,13 @@ class MainActivity : ComponentActivity() {
 fun Greeting(userViewModel: UserViewModel) {
     LazyColumn(verticalArrangement = Arrangement.spacedBy(16.dp)) {
 
-        var users = userViewModel.users
-        if (users?.isNotEmpty() == true) {
-            itemsIndexed(items = users) {_, item ->
-                Text(text = "hej")
-            }
 
+        userViewModel.resultsResponse?.let {
+            itemsIndexed(items = it.results) { _, item ->
+                Text(text = item.email)
+
+
+            }
         }
 
 
