@@ -13,14 +13,17 @@ import kotlinx.coroutines.launch
 class UserViewModel: ViewModel() {
 
     var resultsResponse: List<Results>? by mutableStateOf(null)
+    var users: MutableList<Results>? by mutableStateOf(null)
 
 
     fun setup() {
         viewModelScope.launch(Dispatchers.IO) {
             val response = Repo().fetchAllUsersRetrofit()
-            for (result in response)
+            println(response)
 
-            //resultsResponse = Repo().fetchAllUsersRetrofit()
+            }
+
+
         }
     }
 

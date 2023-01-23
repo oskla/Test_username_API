@@ -43,7 +43,7 @@ class MainActivity : ComponentActivity() {
 fun Greeting(userViewModel: UserViewModel) {
     LazyColumn(verticalArrangement = Arrangement.spacedBy(16.dp)) {
 
-        var users = userViewModel.resultsResponse
+        var users = userViewModel.users
         if (users?.isNotEmpty() == true) {
             itemsIndexed(items = users) {_, item ->
                 Text(text = "hej")
