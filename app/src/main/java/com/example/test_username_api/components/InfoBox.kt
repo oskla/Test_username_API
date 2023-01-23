@@ -7,10 +7,15 @@ import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Flag
+import androidx.compose.material.icons.filled.Mail
+import androidx.compose.material.icons.filled.Male
+import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -39,15 +44,30 @@ fun InfoBox() {
                 modifier = Modifier.height(65.dp),
                 verticalArrangement = Arrangement.Center
             ) {
-                Text(text = "Placeholder", style = TextStyle(fontSize = 18.sp), color = Color(0xFF1F2B2E))
+                Text(text = "Name", style = TextStyle(fontSize = 18.sp), color = Color(0xFF1F2B2E))
                 // TODO - Insert filtersTextRow here
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                   // Icon(Icons.Filled.Schedule, "schedule", Modifier.size(10.dp), tint = Color.Red )
-                }
+
+                InfoBoxDetailsRow(icon = Icons.Filled.Male, descr = "Gender", tint = Color.Red, "Gender") // TODO - add condition male/female
+                InfoBoxDetailsRow(icon = Icons.Filled.Mail, descr = "Mail", tint = Color.Blue, "Email")
+            }
+            Column(
+                verticalArrangement = Arrangement.Top, 
+                modifier = Modifier.fillMaxHeight()
+            ) {
+                InfoBoxDetailsRow(icon = Icons.Filled.Flag, descr = "Country", tint = Color.Blue , text = "SE")
             }
         }
     }
 }
+
+@Composable
+fun InfoBoxDetailsRow(icon: ImageVector, descr: String, tint: Color, text: String) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Icon(icon, descr, Modifier.size(10.dp), tint = tint)
+        Text(text = text, fontSize = 10.sp, modifier = Modifier.padding(3.dp, 0.dp, 0.dp, 0.dp))
+    }
+}
+
 
 
 @Preview(showBackground = true)
