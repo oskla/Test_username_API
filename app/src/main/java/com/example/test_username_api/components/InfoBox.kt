@@ -20,13 +20,14 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.test_username_api.model.Results
 import com.example.test_username_api.ui.theme.Test_username_APITheme
 import com.example.test_username_api.viewmodel.UserViewModel
 import com.example.test_username_api.model.Result as Result
 
 
 @Composable
-fun InfoBox() {
+fun InfoBox(user: Results) {
     Card(
         modifier = Modifier
             .wrapContentHeight()
@@ -44,24 +45,24 @@ fun InfoBox() {
                 modifier = Modifier.height(65.dp),
                 verticalArrangement = Arrangement.Center
             ) {
-                Text(text = "Name", style = TextStyle(fontSize = 18.sp), color = Color(0xFF1F2B2E))
+                Text(text = user.name.first, style = TextStyle(fontSize = 18.sp), color = Color(0xFF1F2B2E))
                 // TODO - Insert filtersTextRow here
 
-                InfoBoxDetailsRow(icon = Icons.Filled.Male, descr = "Gender", tint = Color.Red, "Gender") // TODO - add condition male/female
-                InfoBoxDetailsRow(icon = Icons.Filled.Mail, descr = "Mail", tint = Color.Blue, "Email")
+                InfoBoxDetailsRow(user = user, icon = Icons.Filled.Male, descr = "Gender", tint = Color.Red, "Gender") // TODO - add condition male/female
+                InfoBoxDetailsRow(user = user, icon = Icons.Filled.Mail, descr = "Mail", tint = Color.Blue, "Email")
             }
             Column(
                 verticalArrangement = Arrangement.Top, 
                 modifier = Modifier.fillMaxHeight()
             ) {
-                InfoBoxDetailsRow(icon = Icons.Filled.Flag, descr = "Country", tint = Color.Blue , text = "SE")
+                InfoBoxDetailsRow(user = user, icon = Icons.Filled.Flag, descr = "Country", tint = Color.Blue , text = "SE")
             }
         }
     }
 }
 
 @Composable
-fun InfoBoxDetailsRow(icon: ImageVector, descr: String, tint: Color, text: String) {
+fun InfoBoxDetailsRow(user: Results, icon: ImageVector, descr: String, tint: Color, text: String) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         Icon(icon, descr, Modifier.size(10.dp), tint = tint)
         Text(text = text, fontSize = 10.sp, modifier = Modifier.padding(3.dp, 0.dp, 0.dp, 0.dp))
@@ -74,6 +75,6 @@ fun InfoBoxDetailsRow(icon: ImageVector, descr: String, tint: Color, text: Strin
 @Composable
 fun DefaultPreview() {
     Test_username_APITheme {
-        InfoBox()
+       // InfoBox()
     }
 }

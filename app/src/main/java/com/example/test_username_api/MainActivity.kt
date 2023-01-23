@@ -21,7 +21,8 @@ import com.example.test_username_api.ui.theme.Test_username_APITheme
 import com.example.test_username_api.viewmodel.UserViewModel
 
 class MainActivity : ComponentActivity() {
-    
+    // TODO - function in ViewModel that adds first and last name
+    // TODO - build the Details Page
     private val userViewModel by viewModels<UserViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         userViewModel.setup()
@@ -47,7 +48,7 @@ fun Greeting(userViewModel: UserViewModel) {
 
         userViewModel.resultsResponse?.let {
             itemsIndexed(items = it.results) { _, item ->
-                UserItem()
+                UserItem(user = item)
             }
         }
 

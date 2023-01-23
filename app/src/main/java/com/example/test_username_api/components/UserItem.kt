@@ -18,10 +18,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
+import com.example.test_username_api.model.Results
 import com.example.test_username_api.ui.theme.Test_username_APITheme
 
 @Composable
-fun UserItem() {
+fun UserItem(user: Results) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -44,7 +45,7 @@ fun UserItem() {
                 .clip(RoundedCornerShape(8.dp, 8.dp, 0.dp, 0.dp))
         )
         Box(contentAlignment = Alignment.BottomStart) {
-            InfoBox()
+            InfoBox(user = user)
         }
 
     }
@@ -54,6 +55,6 @@ fun UserItem() {
 @Composable
 fun ItemPreview() {
     Test_username_APITheme {
-        UserItem()
+       // UserItem()
     }
 }
