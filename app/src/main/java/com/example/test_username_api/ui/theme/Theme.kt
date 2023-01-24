@@ -17,7 +17,7 @@ private val DarkColorPalette = darkColors(
 
 private val LightColorPalette = lightColors(
     primary = Purple500,
-    primaryVariant = ltGrey,
+    primaryVariant = dkGrey,
     secondary = Teal200,
     onBackground = notBlack,
     background = notWhite

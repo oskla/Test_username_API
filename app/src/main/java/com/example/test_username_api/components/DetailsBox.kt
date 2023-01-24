@@ -46,7 +46,7 @@ fun DetailsBox(
         Column() {
             Row(modifier = modifier
                 .padding(horizontal = horizontalPadding, vertical = verticalPadding)) {
-                InfoBoxDetailsRow(text = firstAndLastName, textCategory = stringResource(R.string.name), fontSize = 22.sp)
+                InfoBoxDetailsRow(text = firstAndLastName, textCategory = stringResource(R.string.name), fontSize = 22.sp, paddingText = PaddingValues(0.dp, 0.dp, 3.dp, 0.dp))
             }
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
