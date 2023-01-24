@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Test_username_API</string>
+    <string name="name">Name: </string>
+    <string name="email">Email: </string>
+    <string name="gender">Gender: </string>
+    <string name="age">Name: </string>
+    <string name="pageviews">Page Views: </string>
+    <string name="country">Country: </string>
 </resources>

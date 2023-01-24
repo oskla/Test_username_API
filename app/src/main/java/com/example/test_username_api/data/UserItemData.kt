@@ -1,5 +1,7 @@
 package com.example.test_username_api.data
 
+import java.util.UUID
+
 data class UserItemData (
     val firstName: String,
     val lastName: String,
@@ -8,8 +10,9 @@ data class UserItemData (
     val picture: String,
     val age: Int,
     val gender: String,
-    var pageViews: Int
-        )
+    var pageViews: Int,
+    val id: String = UUID.randomUUID().toString()
+    )
 
 var usersData = listOf(
     UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://picsum.photos/200", 54, "male", 4),

@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.test_username_api.components.DetailsView
 import com.example.test_username_api.components.UserItem
 import com.example.test_username_api.components.UsersList
 import com.example.test_username_api.data.usersData
@@ -39,10 +40,22 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    UsersList(userViewModel)
+                   App()
+
                 }
             }
         }
+    }
+}
+
+@Composable
+fun App() {
+    if (usersListVisable) {
+        UsersList()
+    }
+
+    if (detailsViewVisable) {
+        DetailsView(userData = )
     }
 }
 
