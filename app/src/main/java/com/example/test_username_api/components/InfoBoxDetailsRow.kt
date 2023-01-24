@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -24,6 +25,7 @@ fun InfoBoxDetailsRow(
     iconTint: Color? = null,
     text: String,
     textCategory: String,
+    textCategoryColor: Color = MaterialTheme.colors.primaryVariant,
     fontSize: TextUnit = 12.sp,
     paddingText: PaddingValues = PaddingValues(3.dp, 0.dp, 0.dp, 0.dp)
 
@@ -33,7 +35,7 @@ fun InfoBoxDetailsRow(
         if (icon != null && iconTint != null) {
             Icon(icon!!, descr, Modifier.size(iconSize), tint = iconTint!!)
         }
-        Text(text = textCategory, fontSize = fontSize, modifier = Modifier.padding(paddingText))
+        Text(text = textCategory, fontSize = fontSize, modifier = Modifier.padding(paddingText), color = textCategoryColor)
         Text(text = text, fontSize = fontSize, modifier = Modifier.padding(paddingText))
     }
 }

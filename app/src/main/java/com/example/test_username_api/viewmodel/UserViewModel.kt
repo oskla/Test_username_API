@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 class UserViewModel: ViewModel() {
 
     var resultsResponse: Result? by mutableStateOf(null)
-
+    var currentUser: Results? by mutableStateOf(null)
 
 
 

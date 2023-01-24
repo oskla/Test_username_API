@@ -1,6 +1,7 @@
 package com.example.test_username_api.components
 
 import android.content.res.Configuration
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -17,13 +18,16 @@ import com.example.test_username_api.ui.theme.Test_username_APITheme
 @Composable
 fun ImageCardBG(
     userData: UserItemData,
-    clipPictureShape: RoundedCornerShape = RoundedCornerShape(8.dp, 8.dp, 0.dp, 0.dp)
+    clipPictureShape: RoundedCornerShape = RoundedCornerShape(8.dp, 8.dp, 0.dp, 0.dp),
+    contentScale: ContentScale,
+    modifier: Modifier = Modifier.clip(clipPictureShape)
 
 ) {
     AsyncImage(model = userData.picture, contentDescription = "image",
-        contentScale = ContentScale.Crop,
+        contentScale = contentScale,
         modifier = Modifier
-            .clip(clipPictureShape))
+            .clip(clipPictureShape)
+    )
 }
 
 
@@ -34,7 +38,7 @@ fun ImageCardBG(
 @Composable
 fun ImgPreview() {
     Test_username_APITheme {
-        ImageCardBG(UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://randomuser.me/api/portraits/men/57.jpg", 54, "male",4))
+        ImageCardBG(UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://randomuser.me/api/portraits/men/57.jpg", 54, "male",4), contentScale = ContentScale.Crop)
 
     }
 }

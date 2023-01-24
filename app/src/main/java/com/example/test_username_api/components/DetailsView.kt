@@ -1,25 +1,48 @@
 package com.example.test_username_api.components
 
 import android.content.res.Configuration
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.runtime.Composable
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.test_username_api.data.UserItemData
+import com.example.test_username_api.data.getUserById
+import com.example.test_username_api.data.usersData
+import com.example.test_username_api.helpers.addFirstAndLastName
 import com.example.test_username_api.ui.theme.Test_username_APITheme
 
 @Composable
-fun DetailsView(userData: UserItemData) {
+fun DetailsView(
+    userData: List<UserItemData>,
+) {
 
-    Box(modifier = Modifier.height(200.dp).width(200.dp)) {
-        ImageCardBG(userData = userData)
+    var currentUser = usersData.first()
+    var imgSize by remember { mutableStateOf(0) }
+
+    Column() {
+
+        ImageCardBG(
+            userData = getUserById("123"),
+            contentScale = ContentScale.FillWidth,
+            modifier = Modifier
+                .wrapContentHeight()
+                .fillMaxWidth()
+                .onGloballyPositioned {
+                    imgSize = it.size.height
+                })
+        DetailsBox(
+            userData = currentUser,
+            firstAndLastName = addFirstAndLastName(currentUser.firstName, currentUser.lastName),
+            cardShape = RoundedCornerShape(0.dp, 0.dp, 8.dp, 8.dp)
+        )
     }
-
 }
 
 
@@ -32,6 +55,6 @@ fun DetailsView(userData: UserItemData) {
 @Composable
 fun DetailsPreview() {
     Test_username_APITheme {
-        DetailsView(UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://randomuser.me/api/portraits/men/57.jpg", 54, "male",4))
+        DetailsView(userData = usersData)
     }
 }

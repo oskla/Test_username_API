@@ -82,7 +82,7 @@ fun InfoBox(
                 }
                 Column(
                     verticalArrangement = Arrangement.Top,
-                    modifier = Modifier.wrapContentHeight()
+                    modifier = Modifier.wrapContentHeight().align(Alignment.Top)
                 ) {
                     InfoBoxDetailsRow(
                         icon = Icons.Filled.Public,

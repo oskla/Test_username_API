@@ -1,5 +1,6 @@
 package com.example.test_username_api.data
 
+import com.example.test_username_api.model.Results
 import java.util.UUID
 
 data class UserItemData (
@@ -15,17 +16,20 @@ data class UserItemData (
     )
 
 var usersData = listOf(
-    UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://picsum.photos/200", 54, "male", 4),
-    UserItemData("Anders", "Persson", "hello@hi.com", "BR", "https://picsum.photos/200", 54, "male", 4),
-    UserItemData("Johanna", "Skoog", "hello@hi.com", "BR", "https://picsum.photos/200/300", 54, "male",4),
+    UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://picsum.photos/1920/1080", 54, "male", 4, id = "123"),
+    UserItemData("Anders", "Persson", "hello@hi.com", "BR", "https://picsum.photos/1920/1080", 54, "male", 4),
+    UserItemData("Johanna", "Skoog", "hello@hi.com", "BR", "https://picsum.photos/1920/1080", 54, "male",4),
+    UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://picsum.photos/1920/1080", 54, "male",4),
+    UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://picsum.photos/1920/1080", 54, "male",4),
+    UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://picsum.photos/1920/1080", 54, "male",4),
+    UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://picsum.photos/1920/1080", 54, "male",4),
     UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://picsum.photos/200/300", 54, "male",4),
     UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://picsum.photos/200/300", 54, "male",4),
     UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://picsum.photos/200/300", 54, "male",4),
     UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://picsum.photos/200/300", 54, "male",4),
     UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://picsum.photos/200/300", 54, "male",4),
-    UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://picsum.photos/200/300", 54, "male",4),
-    UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://picsum.photos/200/300", 54, "male",4),
-    UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://picsum.photos/200/300", 54, "male",4),
-    UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://picsum.photos/200/300", 54, "male",4),
-
 )
+
+fun getUserById(id: String): UserItemData {
+    return usersData.first { it.id == id }
+}

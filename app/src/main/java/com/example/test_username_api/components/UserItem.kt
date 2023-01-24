@@ -10,6 +10,7 @@ import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -36,12 +37,12 @@ fun UserItem(
             .fillMaxWidth()
             .height(cardHeight)
             .padding(horizontal = cardPaddingHorizontal)
-            .clickable { onClickCard },
+            .clickable {  },
         shape = cardCornerRadius,
         elevation = cardElevation,
     ) {
 
-        ImageCardBG(userData = userData)
+        ImageCardBG(userData = userData, contentScale = ContentScale.Crop)
         InfoBox(
             userData = userData,
             textColor = infoBoxTextColor,

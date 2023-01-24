@@ -9,3 +9,5 @@ val Teal200 = Color(0xFF03DAC5)
 // ----------------------------------
 val notWhite = Color(0xFFF9F9F5)
 val notBlack = Color(0xFF1D1D1D)
+val dkGrey = Color(0xFF646464)
+val ltGrey = Color(0xFFD9D9D9)
