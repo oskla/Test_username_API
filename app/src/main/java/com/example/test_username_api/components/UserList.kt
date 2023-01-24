@@ -19,9 +19,11 @@ fun UsersList(userViewModel: UserViewModel) {
         val usersData = usersData
         //  userViewModel.resultsResponse?.let {
         itemsIndexed(items = usersData) { _, item ->
-            UserItem(item, 168.dp,16.dp,null, null, null, MaterialTheme.colors.background, null)
-           // AsyncImage(model = item.picture, contentDescription = "image")
-        }
+            UserItem(
+                userData = item,
+                cardHeight = 250.dp,
+                cardPaddingHorizontal = 16.dp,
+            ) }
         // }
 
 

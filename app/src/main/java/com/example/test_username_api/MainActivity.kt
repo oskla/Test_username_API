@@ -26,6 +26,7 @@ class MainActivity : ComponentActivity() {
     // TODO - function in ViewModel that adds first and last name
     // TODO - build the Details Page
     // TODO - change font
+    // TODO - migrate to M3
 
     private val userViewModel by viewModels<UserViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {

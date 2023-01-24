@@ -2,6 +2,7 @@ package com.example.test_username_api.components
 
 import android.content.res.Configuration
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -16,10 +17,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.test_username_api.data.UserItemData
@@ -27,56 +31,63 @@ import com.example.test_username_api.ui.theme.Test_username_APITheme
 
 
 @Composable
-fun InfoBox(userData: UserItemData, bgColor: Color, textColor: Color) {
+fun InfoBox(
+    userData: UserItemData,
+    textColor: Color = MaterialTheme.colors.onBackground,
+    cardShape: Shape = RoundedCornerShape(0.dp, 0.dp, 4.dp, 4.dp),
+    paddingAroundBox: Dp = 8.dp,
+    fontSize: TextUnit = 18.sp,
+    firstAndLastName: String = "Name"
+) {
     Box(contentAlignment = Alignment.BottomStart, modifier = Modifier) {
         Card(
-            shape = RoundedCornerShape(0.dp, 0.dp, 4.dp, 4.dp),
+            shape = cardShape,
             elevation = 0.dp,
             modifier = Modifier
-                .wrapContentHeight()
-                .height(70.dp)
                 .fillMaxWidth()
-
         ) {
-
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.background(bgColor).padding(8.dp)
+                modifier = Modifier.padding(paddingAroundBox)
             ) {
                 Column(
-                    modifier = Modifier.height(65.dp),
+                    modifier = Modifier,
                     verticalArrangement = Arrangement.Center
                 ) {
                     Text(
-                        text = userData.firstName + " " + userData.lastName,
-                        style = TextStyle(fontSize = 18.sp),
+                        text = firstAndLastName,
+                        style = TextStyle(fontSize = fontSize),
                         color = textColor
                     )
+
                     // TODO - Insert filtersTextRow here
 
                     InfoBoxDetailsRow(
                         icon = Icons.Filled.Male,
                         descr = "Gender",
-                        tint = Color.Red,
-                        text = userData.gender
+                        iconTint = Color.Red,
+                        text = userData.gender,
+
                     ) // TODO - add condition male/female
                     InfoBoxDetailsRow(
                         icon = Icons.Filled.Mail,
                         descr = "Email",
-                        tint = Color.Blue,
-                        text = userData.email
+                        iconTint = Color.Blue,
+                        text = userData.email,
+
                     )
                 }
                 Column(
                     verticalArrangement = Arrangement.Top,
-                    modifier = Modifier.fillMaxHeight()
+                    modifier = Modifier.wrapContentHeight()
                 ) {
                     InfoBoxDetailsRow(
                         icon = Icons.Filled.Flag,
                         descr = "Country",
-                        tint = Color.Blue,
-                        text = "SE"
+                        iconTint = Color.Blue,
+                        text = "SE",
+
                     )
                 }
             }
@@ -85,10 +96,19 @@ fun InfoBox(userData: UserItemData, bgColor: Color, textColor: Color) {
 }
 
 @Composable
-fun InfoBoxDetailsRow(icon: ImageVector, descr: String, tint: Color, text: String) {
-    Row(verticalAlignment = Alignment.CenterVertically) {
-        Icon(icon, descr, Modifier.size(10.dp), tint = tint)
-        Text(text = text, fontSize = 10.sp, modifier = Modifier.padding(3.dp, 0.dp, 0.dp, 0.dp))
+fun InfoBoxDetailsRow(
+    icon: ImageVector,
+    iconSize: Dp = 10.dp,
+    descr: String = "iconDescription",
+    iconTint: Color,
+    text: String,
+    fontSize: TextUnit = 12.sp,
+    paddingText: PaddingValues = PaddingValues(3.dp, 0.dp, 0.dp, 0.dp)
+
+) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Icon(icon, descr, Modifier.size(iconSize), tint = iconTint)
+            Text(text = text, fontSize = fontSize, modifier = Modifier.padding(paddingText))
     }
 }
 
@@ -101,6 +121,6 @@ fun InfoBoxDetailsRow(icon: ImageVector, descr: String, tint: Color, text: Strin
 @Composable
 fun DefaultPreview() {
     Test_username_APITheme {
-        InfoBox(UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://randomuser.me/api/portraits/men/57.jpg", 54, "male",4), MaterialTheme.colors.background, MaterialTheme.colors.onBackground)
+        InfoBox(UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://randomuser.me/api/portraits/men/57.jpg", 54, "male",4), MaterialTheme.colors.onBackground)
     }
 }
