@@ -1,28 +1,32 @@
 package com.example.test_username_api
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.test_username_api.components.UserItem
+import com.example.test_username_api.components.UsersList
+import com.example.test_username_api.data.usersData
 import com.example.test_username_api.ui.theme.Test_username_APITheme
 import com.example.test_username_api.viewmodel.UserViewModel
 
 class MainActivity : ComponentActivity() {
     // TODO - function in ViewModel that adds first and last name
     // TODO - build the Details Page
+    // TODO - change font
+
     private val userViewModel by viewModels<UserViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         userViewModel.setup()
@@ -34,34 +38,35 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting(userViewModel)
+                    UsersList(userViewModel)
                 }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(userViewModel: UserViewModel) {
+/*@Composable
+fun UsersList(userViewModel: UserViewModel) {
     LazyColumn(verticalArrangement = Arrangement.spacedBy(16.dp)) {
 
-
-        userViewModel.resultsResponse?.let {
-            itemsIndexed(items = it.results) { _, item ->
-                UserItem(user = item)
+        val usersData = usersData
+      //  userViewModel.resultsResponse?.let {
+            itemsIndexed(items = usersData) { _, item ->
+                UserItem(item)
             }
-        }
+       // }
 
 
         }
 
-    }
+    }*/
 
 
-@Preview(showBackground = true)
+@Preview("ComponentPreview (light)", showBackground = true)
+@Preview("ComponentPreview (dark)", uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview("ComponentPreview (big font)", fontScale = 1.5f)
+@Preview("ComponentPreview (large screen)", device = Devices.PIXEL_C)
 @Composable
-fun DefaultPreview() {
-    Test_username_APITheme {
-       // Greeting("Android")
-    }
+fun ComponentPreview() {
+
 }
