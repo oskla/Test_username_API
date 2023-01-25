@@ -10,6 +10,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -47,6 +48,10 @@ fun App() {
 
     var usersListVisible: Boolean by remember { mutableStateOf(true) }
     var detailsViewVisible: Boolean by remember { mutableStateOf(false) }
+
+    var selectedBtn: Boolean by remember { mutableStateOf(false) }
+
+    //val color = if (filterBtnSelectedColor) Color.Black else Color.Yellow
 
     Column(
         modifier = Modifier.padding(horizontal = 16.dp)

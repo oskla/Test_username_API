@@ -13,6 +13,7 @@ val notBlack = Color(0xFF1D1D1D)
 val dkGrey = Color(0xFF646464)
 val ltGrey = Color(0xFFD9D9D9)
 val darkerGrey = Color(0xFF181818)
+val yellow = Color(0xFFFFC164)
 
 
 

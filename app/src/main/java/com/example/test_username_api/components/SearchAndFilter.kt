@@ -14,7 +14,7 @@ import com.example.test_username_api.ui.theme.Test_username_APITheme
 
 @Composable
 fun SearchAndFilter(
-    verticalPadding: Dp = 16.dp
+    verticalPadding: Dp = 16.dp,
 ) {
     Column(
         verticalArrangement = Arrangement.SpaceBetween,
