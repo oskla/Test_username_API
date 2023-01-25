@@ -1,9 +1,7 @@
 package com.example.test_username_api.components
 
 import android.content.res.Configuration
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -23,13 +21,14 @@ fun ImageCardBG(
     modifier: Modifier = Modifier.clip(clipPictureShape)
 
 ) {
-    AsyncImage(model = userData.picture, contentDescription = "image",
+    AsyncImage(
+        model = userData.picture,
+        contentDescription = "image",
         contentScale = contentScale,
         modifier = Modifier
             .clip(clipPictureShape)
     )
 }
-
 
 @Preview("ComponentPreview (light)", showBackground = true)
 @Preview("ComponentPreview (dark)", uiMode = Configuration.UI_MODE_NIGHT_YES)
@@ -38,7 +37,6 @@ fun ImageCardBG(
 @Composable
 fun ImgPreview() {
     Test_username_APITheme {
-        ImageCardBG(UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://randomuser.me/api/portraits/men/57.jpg", 54, "male",4), contentScale = ContentScale.Crop)
-
+        ImageCardBG(UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://randomuser.me/api/portraits/men/57.jpg", 54, "male", 4), contentScale = ContentScale.Crop)
     }
 }

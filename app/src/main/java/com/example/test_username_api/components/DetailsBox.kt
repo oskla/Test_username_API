@@ -1,18 +1,13 @@
 package com.example.test_username_api.components
 
 import android.content.res.Configuration
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
@@ -23,7 +18,6 @@ import com.example.test_username_api.R
 import com.example.test_username_api.data.UserItemData
 import com.example.test_username_api.ui.theme.Test_username_APITheme
 
-
 @Composable
 fun DetailsBox(
     userData: UserItemData,
@@ -32,20 +26,19 @@ fun DetailsBox(
     cardShape: RoundedCornerShape = RoundedCornerShape(8.dp),
     firstAndLastName: String = "Name",
     horizontalPadding: Dp = 16.dp,
-    verticalPadding: Dp = 8.dp,
+    verticalPadding: Dp = 8.dp
 
 ) {
-
-
     Card(
         modifier = modifier,
         elevation = cardElevation,
         shape = cardShape
     ) {
-
         Column() {
-            Row(modifier = modifier
-                .padding(horizontal = horizontalPadding, vertical = verticalPadding)) {
+            Row(
+                modifier = modifier
+                    .padding(horizontal = horizontalPadding, vertical = verticalPadding)
+            ) {
                 InfoBoxDetailsRow(text = firstAndLastName, textCategory = stringResource(R.string.name), fontSize = 22.sp, paddingText = PaddingValues(0.dp, 0.dp, 3.dp, 0.dp))
             }
             Row(
@@ -56,11 +49,10 @@ fun DetailsBox(
                     .height(IntrinsicSize.Max)
             ) {
                 Column(
-                    verticalArrangement = Arrangement.SpaceBetween,
+                    verticalArrangement = Arrangement.SpaceBetween
                 ) {
-
                     InfoBoxDetailsRow(text = userData.gender, textCategory = stringResource(R.string.gender), fontSize = 14.sp)
-                    InfoBoxDetailsRow(text = userData.email,  textCategory = stringResource(R.string.email), fontSize = 14.sp)
+                    InfoBoxDetailsRow(text = userData.email, textCategory = stringResource(R.string.email), fontSize = 14.sp)
                     InfoBoxDetailsRow(text = userData.age.toString(), textCategory = stringResource(R.string.age), fontSize = 14.sp)
                 }
                 Column(verticalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxHeight()) {
@@ -68,9 +60,7 @@ fun DetailsBox(
                     InfoBoxDetailsRow(text = userData.pageViews.toString(), textCategory = stringResource(R.string.pageviews), fontSize = 14.sp)
                 }
             }
-
         }
-
     }
 }
 
@@ -81,6 +71,6 @@ fun DetailsBox(
 @Composable
 fun DetailsBoxPreview() {
     Test_username_APITheme {
-        DetailsBox(userData = UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://randomuser.me/api/portraits/men/57.jpg", 54, "male",4))
+        DetailsBox(userData = UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://randomuser.me/api/portraits/men/57.jpg", 54, "male", 4))
     }
 }
