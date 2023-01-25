@@ -29,9 +29,9 @@ import com.example.test_username_api.ui.theme.Test_username_APITheme
 fun FilterButtons(
 ) {
     LazyRow(
-        modifier = Modifier.padding(end = 8.dp),
+        modifier = Modifier,
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
        itemsIndexed(items = filters) { _, item ->
             FilterButton(btnText = item.text)
@@ -49,7 +49,7 @@ fun FilterButton(
     btnText: String,
     btnTextColor: Color = Color.Black,
     btnBg: Color = MaterialTheme.colors.secondary,
-    btnBgSelected: Color = Color.Yellow,
+    btnBgSelected: Color = MaterialTheme.colors.secondaryVariant,
     btnShape: RoundedCornerShape = RoundedCornerShape(4.dp),
     paddingVertical: Dp = 8.dp,
     paddingHorizontal: Dp = 16.dp,
