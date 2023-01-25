@@ -11,7 +11,6 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -37,7 +36,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                   App()
+                    App()
                 }
             }
         }
@@ -46,14 +45,12 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun App() {
-
     val usersListVisible = rememberSaveable { mutableStateOf(true) }
     val detailsViewVisible = rememberSaveable { mutableStateOf(false) }
 
     Column(
         modifier = Modifier.padding(horizontal = 16.dp)
     ) {
-
         if (usersListVisible.value) {
             SearchAndFilter()
             UsersList(
@@ -70,9 +67,6 @@ fun App() {
         }
     }
 }
-
-
-
 
 @Preview("ComponentPreview (light)", showBackground = true)
 @Preview("ComponentPreview (dark)", uiMode = Configuration.UI_MODE_NIGHT_YES)
