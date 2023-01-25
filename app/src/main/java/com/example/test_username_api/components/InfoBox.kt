@@ -38,12 +38,15 @@ fun InfoBox(
     cardShape: Shape = RoundedCornerShape(0.dp, 0.dp, 4.dp, 4.dp),
     paddingAroundBox: Dp = 8.dp,
     fontSize: TextUnit = 18.sp,
-    firstAndLastName: String = "Name"
+    firstAndLastName: String = "Name",
+    bgColor: Color = MaterialTheme.colors.surface
+
 ) {
     Box(contentAlignment = Alignment.BottomStart, modifier = Modifier) {
         Card(
             shape = cardShape,
             elevation = 0.dp,
+            backgroundColor = bgColor,
             modifier = Modifier
                 .fillMaxWidth()
         ) {
@@ -107,7 +110,7 @@ fun InfoBox(
 @Composable
 fun DefaultPreview() {
     Test_username_APITheme {
-        InfoBox(UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://randomuser.me/api/portraits/men/57.jpg", 54, "male",4), MaterialTheme.colors.onBackground)
+        InfoBox(UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://randomuser.me/api/portraits/men/57.jpg", 54, "male",4), MaterialTheme.colors.onBackground, bgColor = MaterialTheme.colors.surface)
 
     }
 }

@@ -5,15 +5,17 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.test_username_api.components.DetailsView
-import com.example.test_username_api.components.UsersList
+import androidx.compose.ui.unit.dp
+import com.example.test_username_api.components.*
 import com.example.test_username_api.data.usersData
 import com.example.test_username_api.ui.theme.Test_username_APITheme
 import com.example.test_username_api.viewmodel.UserViewModel
@@ -36,7 +38,6 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                    App()
-
                 }
             }
         }
@@ -46,15 +47,22 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun App() {
 
-    var usersListVisible: Boolean by remember { mutableStateOf(false) }
-    var detailsViewVisible: Boolean by remember { mutableStateOf(true) }
+    var usersListVisible: Boolean by remember { mutableStateOf(true) }
+    var detailsViewVisible: Boolean by remember { mutableStateOf(false) }
 
-    if (usersListVisible) {
-        UsersList()
-    }
+    Column(
+        modifier = Modifier.padding(horizontal = 16.dp)
+    ) {
 
-    if (detailsViewVisible) {
-        DetailsView(userData = usersData)
+        SearchView()
+
+        if (usersListVisible) {
+            UsersList()
+        }
+
+        if (detailsViewVisible) {
+            DetailsView(userData = usersData)
+        }
     }
 }
 

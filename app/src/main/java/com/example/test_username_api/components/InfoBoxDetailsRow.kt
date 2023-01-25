@@ -32,9 +32,9 @@ fun InfoBoxDetailsRow(
 ) {
     Row(verticalAlignment = Alignment.CenterVertically) {
 
-        if (icon != null && iconTint != null) {
+     /*   if (icon != null && iconTint != null) {
             Icon(icon!!, descr, Modifier.size(iconSize), tint = iconTint!!)
-        }
+        }*/
         Text(text = textCategory, fontSize = fontSize, modifier = Modifier.padding(paddingText), color = textCategoryColor)
         Text(text = text, fontSize = fontSize, modifier = Modifier.padding(paddingText))
     }

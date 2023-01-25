@@ -27,7 +27,7 @@ fun UsersList() {
             UserItem(
                 userData = item,
                 cardHeight = 250.dp,
-                cardPaddingHorizontal = 16.dp,
+                cardPaddingHorizontal = 0.dp,
             ) }
         // }
 

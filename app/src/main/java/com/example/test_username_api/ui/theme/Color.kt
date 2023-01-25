@@ -1,5 +1,6 @@
 package com.example.test_username_api.ui.theme
 
+import androidx.compose.material.TextFieldDefaults
 import androidx.compose.ui.graphics.Color
 
 val Purple200 = Color(0xFFBB86FC)
@@ -11,3 +12,7 @@ val notWhite = Color(0xFFF9F9F5)
 val notBlack = Color(0xFF1D1D1D)
 val dkGrey = Color(0xFF646464)
 val ltGrey = Color(0xFFD9D9D9)
+val darkerGrey = Color(0xFF181818)
+
+
+

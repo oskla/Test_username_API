@@ -25,10 +25,10 @@ fun UserItem(
     userData: UserItemData,
     cardHeight: Dp,
     cardPaddingHorizontal: Dp,
-    cardCornerRadius: RoundedCornerShape = RoundedCornerShape(12.dp, 12.dp, 4.dp, 4.dp),
+    cardCornerRadius: RoundedCornerShape = RoundedCornerShape(12.dp, 12.dp, 12.dp, 12.dp),
     cardElevation: Dp = 4.dp,
     onClickCard: (() -> Unit) = { println("onClick placeholder")},
-    infoBoxBgColor: Color = MaterialTheme.colors.background,
+    infoBoxBgColor: Color = MaterialTheme.colors.surface,
     infoBoxTextColor: Color = MaterialTheme.colors.onBackground,
 
     ) {
@@ -46,7 +46,8 @@ fun UserItem(
         InfoBox(
             userData = userData,
             textColor = infoBoxTextColor,
-            firstAndLastName = addFirstAndLastName(userData.firstName, userData.lastName)
+            firstAndLastName = addFirstAndLastName(userData.firstName, userData.lastName),
+            bgColor = infoBoxBgColor
             )
     }
 }
