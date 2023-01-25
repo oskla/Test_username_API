@@ -26,22 +26,20 @@ import com.example.test_username_api.data.filters
 import com.example.test_username_api.ui.theme.Test_username_APITheme
 
 @Composable
-fun FilterButtons(
-) {
+fun FilterButtons() {
     LazyRow(
         modifier = Modifier,
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-       itemsIndexed(items = filters) { _, item ->
+        itemsIndexed(items = filters) { _, item ->
             FilterButton(btnText = item.text)
-       }
+        }
 
        /* FilterButton(btnText = "Male", onClick = onClick)
         Spacer(modifier = Modifier.width(8.dp))
         FilterButton(btnText = "Female", onClick = onClick)*/
     }
-
 }
 
 @Composable
@@ -52,26 +50,23 @@ fun FilterButton(
     btnBgSelected: Color = MaterialTheme.colors.secondaryVariant,
     btnShape: RoundedCornerShape = RoundedCornerShape(4.dp),
     paddingVertical: Dp = 8.dp,
-    paddingHorizontal: Dp = 16.dp,
+    paddingHorizontal: Dp = 16.dp
 ) {
-
     var selected by rememberSaveable { mutableStateOf(false) }
 
-    Box(modifier = Modifier
-        .clip(shape = btnShape)
-        .background(if (selected) btnBgSelected else btnBg)
-        .padding(horizontal = paddingHorizontal, vertical = paddingVertical)
-        .clickable(onClick = {
-            selected = !selected
-        })
+    Box(
+        modifier = Modifier
+            .clip(shape = btnShape)
+            .background(if (selected) btnBgSelected else btnBg)
+            .padding(horizontal = paddingHorizontal, vertical = paddingVertical)
+            .clickable(onClick = {
+                selected = !selected
+            })
 
     ) {
         Text(text = btnText, color = btnTextColor)
     }
-
 }
-
-
 
 @Preview("ComponentPreview (light)", showBackground = true)
 @Preview("ComponentPreview (dark)", uiMode = Configuration.UI_MODE_NIGHT_YES)
@@ -80,7 +75,7 @@ fun FilterButton(
 @Composable
 fun FiltersPreview() {
     Test_username_APITheme {
-        //FilterButton(btnText = "Male")
+        // FilterButton(btnText = "Male")
         FilterButtons()
     }
 }

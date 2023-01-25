@@ -1,8 +1,5 @@
 package com.example.test_username_api.model
 
-import com.google.gson.annotations.SerializedName
-
-
 data class Results(
     val cell: String,
     val dob: Dob,

@@ -1,6 +1,5 @@
 package com.example.test_username_api.components
 
-import android.content.res.Configuration
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -10,16 +9,12 @@ import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.test_username_api.data.UserItemData
 import com.example.test_username_api.helpers.addFirstAndLastName
-import com.example.test_username_api.ui.theme.Test_username_APITheme
 import androidx.compose.ui.graphics.Color as Color
 
 @Composable
@@ -32,9 +27,9 @@ fun UserItem(
     detailsState: MutableState<Boolean>,
     userListState: MutableState<Boolean>,
     infoBoxBgColor: Color = MaterialTheme.colors.surface,
-    infoBoxTextColor: Color = MaterialTheme.colors.onBackground,
+    infoBoxTextColor: Color = MaterialTheme.colors.onBackground
 
-    ) {
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -45,16 +40,15 @@ fun UserItem(
                 userListState.value = false
             }),
         shape = cardCornerRadius,
-        elevation = cardElevation,
+        elevation = cardElevation
     ) {
-
         ImageCardBG(userData = userData, contentScale = ContentScale.Crop)
         InfoBox(
             userData = userData,
             textColor = infoBoxTextColor,
             firstAndLastName = addFirstAndLastName(userData.firstName, userData.lastName),
             bgColor = infoBoxBgColor
-            )
+        )
     }
 }
 /*@Preview("ComponentPreview (light)", showBackground = true)

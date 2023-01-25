@@ -1,7 +1,6 @@
 package com.example.test_username_api.components
 
 import android.content.res.Configuration
-import android.widget.Space
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -14,7 +13,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.input.TextFieldValue
@@ -24,16 +22,14 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.test_username_api.ui.theme.Test_username_APITheme
 
-
-
 @Composable
 fun SearchView(paddingVertical: Dp = 16.dp) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
         modifier = Modifier
-            //.padding(vertical = paddingVertical)
-            .height(IntrinsicSize.Max),
+            // .padding(vertical = paddingVertical)
+            .height(IntrinsicSize.Max)
     ) {
         SearchBar()
         SquareButton()
@@ -74,7 +70,6 @@ fun SearchBar(
             )
         )
     }
-
 }
 
 @Composable
@@ -82,7 +77,7 @@ fun SquareButton(
     icon: ImageVector = Icons.Filled.Search,
     padding: PaddingValues = PaddingValues(8.dp, 0.dp, 0.dp, 0.dp),
     iconTint: Color = MaterialTheme.colors.primaryVariant,
-    bgColorButton: Color = MaterialTheme.colors.surface,
+    bgColorButton: Color = MaterialTheme.colors.surface
 ) {
     Box(
         modifier = Modifier
@@ -92,17 +87,16 @@ fun SquareButton(
             .fillMaxHeight()
             .aspectRatio(1f)
             .background(bgColorButton),
-        contentAlignment = Alignment.Center,
+        contentAlignment = Alignment.Center
 
-        ) {
+    ) {
         Icon(
             imageVector = icon,
             contentDescription = null,
-            tint = iconTint)
+            tint = iconTint
+        )
     }
 }
-
-
 
 @Preview("ComponentPreview (light)", showBackground = true)
 @Preview("ComponentPreview (dark)", uiMode = Configuration.UI_MODE_NIGHT_YES)
@@ -111,8 +105,8 @@ fun SquareButton(
 @Composable
 fun SearchBarPreview() {
     Test_username_APITheme {
-        //SearchBar()
-        //SquareButton()
+        // SearchBar()
+        // SquareButton()
         SearchView()
     }
 }
