@@ -19,10 +19,6 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun InfoBoxDetailsRow(
-    icon: ImageVector? = null,
-    iconSize: Dp = 10.dp,
-    descr: String = "iconDescription",
-    iconTint: Color? = null,
     text: String,
     textCategory: String,
     textCategoryColor: Color = MaterialTheme.colors.primaryVariant,
@@ -31,10 +27,6 @@ fun InfoBoxDetailsRow(
 
 ) {
     Row(verticalAlignment = Alignment.CenterVertically) {
-
-     /*   if (icon != null && iconTint != null) {
-            Icon(icon!!, descr, Modifier.size(iconSize), tint = iconTint!!)
-        }*/
         Text(text = textCategory, fontSize = fontSize, modifier = Modifier.padding(paddingText), color = textCategoryColor)
         Text(text = text, fontSize = fontSize, modifier = Modifier.padding(paddingText))
     }

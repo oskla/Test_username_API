@@ -68,17 +68,11 @@ fun InfoBox(
                     // TODO - Insert filtersTextRow here
 
                     InfoBoxDetailsRow(
-                        icon = Icons.Filled.Male,
-                        descr = "Gender",
-                        iconTint = Color.Red,
                         text = userData.gender,
                         textCategory = stringResource(R.string.gender)
 
                     ) // TODO - add condition male/female
                     InfoBoxDetailsRow(
-                        icon = Icons.Filled.Mail,
-                        descr = "Email",
-                        iconTint = Color.Blue,
                         text = userData.email,
                         textCategory = stringResource(R.string.email)
                     )
@@ -88,9 +82,6 @@ fun InfoBox(
                     modifier = Modifier.wrapContentHeight().align(Alignment.Top)
                 ) {
                     InfoBoxDetailsRow(
-                        icon = Icons.Filled.Public,
-                        descr = "Country",
-                        iconTint = Color.Blue,
                         text = "SE",
                         textCategory = stringResource(R.string.country)
                     )

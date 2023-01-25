@@ -1,6 +1,7 @@
 package com.example.test_username_api.components
 
 import android.content.res.Configuration
+import android.widget.Space
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -11,6 +12,7 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -24,9 +26,15 @@ import com.example.test_username_api.ui.theme.Test_username_APITheme
 
 
 @Composable
-fun SearchView() {
-    Row(verticalAlignment = Alignment.CenterVertically) {
-
+fun SearchView(paddingVertical: Dp = 16.dp) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center,
+        modifier = Modifier
+            .padding(vertical = paddingVertical)
+            .height(IntrinsicSize.Max)
+            .fillMaxWidth(),
+    ) {
         SearchBar()
         SquareButton()
     }
@@ -36,7 +44,6 @@ fun SearchView() {
 
 @Composable
 fun SearchBar(
-    paddingVertical: Dp = 16.dp,
     placeHolderColor: Color = MaterialTheme.colors.primaryVariant,
     bgColorSearchBar: Color = MaterialTheme.colors.surface,
     singleLine: Boolean = true
@@ -45,8 +52,7 @@ fun SearchBar(
     var searchText by remember { mutableStateOf(TextFieldValue("")) }
 
     Box(
-        modifier = Modifier
-            .padding(vertical = paddingVertical),
+        modifier = Modifier,
         contentAlignment = Alignment.Center
     ) {
         TextField(
@@ -74,20 +80,19 @@ fun SearchBar(
 @Composable
 fun SquareButton(
     icon: ImageVector = Icons.Filled.Search,
-    padding: Dp = 8.dp,
+    padding: PaddingValues = PaddingValues(8.dp, 0.dp, 0.dp, 0.dp),
     iconTint: Color = MaterialTheme.colors.primaryVariant,
     bgColorButton: Color = MaterialTheme.colors.surface,
-    size: Dp = 42.dp
 ) {
     Box(
         modifier = Modifier
+            .clip(shape = RoundedCornerShape(8.dp))
             .padding(padding)
             .clickable { }
-            .height(size)
-            .width(size)
-            .background(bgColorButton)
-        ,
-        contentAlignment = Alignment.Center
+            .fillMaxHeight()
+            .aspectRatio(1f)
+            .background(bgColorButton),
+        contentAlignment = Alignment.Center,
 
         ) {
         Icon(

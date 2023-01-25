@@ -59,13 +59,13 @@ fun DetailsBox(
                     verticalArrangement = Arrangement.SpaceBetween,
                 ) {
 
-                    InfoBoxDetailsRow(text = userData.gender, icon = Icons.Filled.Male, iconTint = MaterialTheme.colors.primaryVariant, iconSize = 14.dp, textCategory = stringResource(R.string.gender), fontSize = 14.sp)
-                    InfoBoxDetailsRow(text = userData.email, icon = Icons.Filled.Email, iconTint = MaterialTheme.colors.primaryVariant, iconSize = 14.dp, textCategory = stringResource(R.string.email), fontSize = 14.sp)
-                    InfoBoxDetailsRow(text = userData.age.toString(), icon = Icons.Filled.Person, iconTint = MaterialTheme.colors.primaryVariant, iconSize = 14.dp, textCategory = stringResource(R.string.age), fontSize = 14.sp)
+                    InfoBoxDetailsRow(text = userData.gender, textCategory = stringResource(R.string.gender), fontSize = 14.sp)
+                    InfoBoxDetailsRow(text = userData.email,  textCategory = stringResource(R.string.email), fontSize = 14.sp)
+                    InfoBoxDetailsRow(text = userData.age.toString(), textCategory = stringResource(R.string.age), fontSize = 14.sp)
                 }
                 Column(verticalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxHeight()) {
-                    InfoBoxDetailsRow(text = userData.country, icon = Icons.Filled.Public, iconTint = MaterialTheme.colors.primaryVariant, iconSize = 14.dp, textCategory = stringResource(R.string.country), fontSize = 14.sp)
-                    InfoBoxDetailsRow(text = userData.pageViews.toString(), icon = Icons.Filled.ExposurePlus1, iconTint = MaterialTheme.colors.primaryVariant, iconSize = 14.dp, textCategory = stringResource(R.string.pageviews), fontSize = 14.sp)
+                    InfoBoxDetailsRow(text = userData.country, textCategory = stringResource(R.string.country), fontSize = 14.sp)
+                    InfoBoxDetailsRow(text = userData.pageViews.toString(), textCategory = stringResource(R.string.pageviews), fontSize = 14.sp)
                 }
             }
 

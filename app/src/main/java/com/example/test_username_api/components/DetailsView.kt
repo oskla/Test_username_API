@@ -24,7 +24,6 @@ fun DetailsView(
 ) {
 
     var currentUser = usersData.first()
-    var imgSize by remember { mutableStateOf(0) }
 
     Column() {
 
@@ -34,9 +33,7 @@ fun DetailsView(
             modifier = Modifier
                 .wrapContentHeight()
                 .fillMaxWidth()
-                .onGloballyPositioned {
-                    imgSize = it.size.height
-                })
+                )
         DetailsBox(
             userData = currentUser,
             firstAndLastName = addFirstAndLastName(currentUser.firstName, currentUser.lastName),
