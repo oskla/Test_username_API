@@ -1,5 +1,6 @@
 package com.example.test_username_api.components
 
+import android.annotation.SuppressLint
 import android.content.res.Configuration
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -57,7 +58,8 @@ fun UserItem(
             )
     }
 }
-/*@Preview("ComponentPreview (light)", showBackground = true)
+@SuppressLint("UnrememberedMutableState")
+@Preview("ComponentPreview (light)", showBackground = true)
 @Preview("ComponentPreview (dark)", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Preview("ComponentPreview (big font)", fontScale = 1.5f)
 @Preview("ComponentPreview (large screen)", device = Devices.PIXEL_C)
@@ -68,8 +70,8 @@ fun ItemPreview() {
            userData = UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://randomuser.me/api/portraits/men/57.jpg", 54, "male",4),
            cardHeight = 250.dp,
            cardPaddingHorizontal = 16.dp,
-           onClickCard = {"hej"},
-           detailsState = mutableStateOf(true)
-           )
+           detailsState = mutableStateOf(true),
+           userListState = mutableStateOf(true)
+       )
     }
-}*/
+}

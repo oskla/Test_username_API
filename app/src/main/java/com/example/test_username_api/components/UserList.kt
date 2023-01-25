@@ -1,5 +1,6 @@
 package com.example.test_username_api.components
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
@@ -8,6 +9,7 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
@@ -40,7 +42,7 @@ fun UsersList(
     }
 }
 
-/*
+@SuppressLint("UnrememberedMutableState")
 @Preview("ComponentPreview (light)", showBackground = true)
 @Preview("ComponentPreview (dark)", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Preview("ComponentPreview (big font)", fontScale = 1.5f)
@@ -48,7 +50,7 @@ fun UsersList(
 @Composable
 fun UsersListPreview() {
     Test_username_APITheme {
-        UsersList(detailsVisible = {true}, detailsState = true)
+        UsersList(detailsState = mutableStateOf(true), userListState = mutableStateOf(true))
 
     }
-}*/
+}

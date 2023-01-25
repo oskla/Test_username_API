@@ -4,6 +4,8 @@ import android.content.res.Configuration
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBackIosNew
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -20,12 +22,20 @@ import com.example.test_username_api.ui.theme.Test_username_APITheme
 
 @Composable
 fun DetailsView(
-    userData: List<UserItemData>
+    userData: List<UserItemData>,
+    onClick: () -> Unit
 ) {
 
     var currentUser = usersData.first()
 
-    Column() {
+    Column {
+
+        SquareButton(
+            modifier = Modifier.padding(vertical = 16.dp).size(42.dp),
+            icon = Icons.Filled.ArrowBackIosNew,
+            padding = PaddingValues(0.dp),
+            onClick = onClick
+        )
 
         ImageCardBG(
             userData = getUserById("123"),
@@ -34,6 +44,7 @@ fun DetailsView(
                 .wrapContentHeight()
                 .fillMaxWidth()
                 )
+
         DetailsBox(
             userData = currentUser,
             firstAndLastName = addFirstAndLastName(currentUser.firstName, currentUser.lastName),
@@ -52,6 +63,6 @@ fun DetailsView(
 @Composable
 fun DetailsPreview() {
     Test_username_APITheme {
-        DetailsView(userData = usersData)
+        DetailsView(userData = usersData, onClick = {})
     }
 }

@@ -63,7 +63,10 @@ fun App() {
         }
 
         if (detailsViewVisible.value) {
-            DetailsView(userData = usersData)
+            DetailsView(userData = usersData, onClick = {
+                detailsViewVisible.value = false
+                usersListVisible.value = true
+            })
         }
     }
 }
@@ -77,5 +80,5 @@ fun App() {
 @Preview("ComponentPreview (large screen)", device = Devices.PIXEL_C)
 @Composable
 fun ComponentPreview() {
-
+    App()
 }

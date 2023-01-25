@@ -34,18 +34,15 @@ fun FilterButtons(
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
        itemsIndexed(items = filters) { _, item ->
-            FilterButton(btnText = item.text)
+            IconButton(btnText = item.text)
        }
 
-       /* FilterButton(btnText = "Male", onClick = onClick)
-        Spacer(modifier = Modifier.width(8.dp))
-        FilterButton(btnText = "Female", onClick = onClick)*/
     }
 
 }
 
 @Composable
-fun FilterButton(
+fun IconButton(
     btnText: String,
     btnTextColor: Color = Color.Black,
     btnBg: Color = MaterialTheme.colors.secondary,

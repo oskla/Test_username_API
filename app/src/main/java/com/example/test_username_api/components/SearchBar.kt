@@ -32,11 +32,10 @@ fun SearchView(paddingVertical: Dp = 16.dp) {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
         modifier = Modifier
-            //.padding(vertical = paddingVertical)
             .height(IntrinsicSize.Max),
     ) {
         SearchBar()
-        SquareButton()
+        SquareButton(onClick = { "todo - add action here" })
     }
 }
 
@@ -77,30 +76,7 @@ fun SearchBar(
 
 }
 
-@Composable
-fun SquareButton(
-    icon: ImageVector = Icons.Filled.Search,
-    padding: PaddingValues = PaddingValues(8.dp, 0.dp, 0.dp, 0.dp),
-    iconTint: Color = MaterialTheme.colors.primaryVariant,
-    bgColorButton: Color = MaterialTheme.colors.surface,
-) {
-    Box(
-        modifier = Modifier
-            .padding(padding)
-            .clip(shape = RoundedCornerShape(8.dp))
-            .clickable { }
-            .fillMaxHeight()
-            .aspectRatio(1f)
-            .background(bgColorButton),
-        contentAlignment = Alignment.Center,
 
-        ) {
-        Icon(
-            imageVector = icon,
-            contentDescription = null,
-            tint = iconTint)
-    }
-}
 
 
 
