@@ -9,6 +9,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Devices
@@ -27,7 +29,8 @@ fun UserItem(
     cardPaddingHorizontal: Dp,
     cardCornerRadius: RoundedCornerShape = RoundedCornerShape(12.dp, 12.dp, 12.dp, 12.dp),
     cardElevation: Dp = 4.dp,
-    onClickCard: (() -> Unit) = { println("onClick placeholder")},
+    detailsState: MutableState<Boolean>,
+    userListState: MutableState<Boolean>,
     infoBoxBgColor: Color = MaterialTheme.colors.surface,
     infoBoxTextColor: Color = MaterialTheme.colors.onBackground,
 
@@ -37,7 +40,10 @@ fun UserItem(
             .fillMaxWidth()
             .height(cardHeight)
             .padding(horizontal = cardPaddingHorizontal)
-            .clickable {  },
+            .clickable(onClick = {
+                detailsState.value = true
+                userListState.value = false
+            }),
         shape = cardCornerRadius,
         elevation = cardElevation,
     ) {
@@ -51,7 +57,7 @@ fun UserItem(
             )
     }
 }
-@Preview("ComponentPreview (light)", showBackground = true)
+/*@Preview("ComponentPreview (light)", showBackground = true)
 @Preview("ComponentPreview (dark)", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Preview("ComponentPreview (big font)", fontScale = 1.5f)
 @Preview("ComponentPreview (large screen)", device = Devices.PIXEL_C)
@@ -62,7 +68,8 @@ fun ItemPreview() {
            userData = UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://randomuser.me/api/portraits/men/57.jpg", 54, "male",4),
            cardHeight = 250.dp,
            cardPaddingHorizontal = 16.dp,
-
-       )
+           onClickCard = {"hej"},
+           detailsState = mutableStateOf(true)
+           )
     }
-}
+}*/

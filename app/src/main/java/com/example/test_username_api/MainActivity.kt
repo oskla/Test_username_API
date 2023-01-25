@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Devices
@@ -46,23 +47,22 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun App() {
 
-    var usersListVisible: Boolean by remember { mutableStateOf(true) }
-    var detailsViewVisible: Boolean by remember { mutableStateOf(false) }
-
-    var selectedBtn: Boolean by remember { mutableStateOf(false) }
-
-    //val color = if (filterBtnSelectedColor) Color.Black else Color.Yellow
+    val usersListVisible = rememberSaveable { mutableStateOf(true) }
+    val detailsViewVisible = rememberSaveable { mutableStateOf(false) }
 
     Column(
         modifier = Modifier.padding(horizontal = 16.dp)
     ) {
 
-        if (usersListVisible) {
+        if (usersListVisible.value) {
             SearchAndFilter()
-            UsersList()
+            UsersList(
+                detailsState = detailsViewVisible,
+                userListState = usersListVisible
+            )
         }
 
-        if (detailsViewVisible) {
+        if (detailsViewVisible.value) {
             DetailsView(userData = usersData)
         }
     }

@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
@@ -18,7 +19,10 @@ import com.example.test_username_api.ui.theme.Test_username_APITheme
 import com.example.test_username_api.viewmodel.UserViewModel
 
 @Composable
-fun UsersList() {
+fun UsersList(
+    detailsState: MutableState<Boolean>,
+    userListState: MutableState<Boolean>
+) {
     LazyColumn(verticalArrangement = Arrangement.spacedBy(16.dp)) {
 
         val usersData = usersData
@@ -28,12 +32,15 @@ fun UsersList() {
                 userData = item,
                 cardHeight = 250.dp,
                 cardPaddingHorizontal = 0.dp,
+                detailsState = detailsState,
+                userListState = userListState
             ) }
         // }
 
     }
 }
 
+/*
 @Preview("ComponentPreview (light)", showBackground = true)
 @Preview("ComponentPreview (dark)", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Preview("ComponentPreview (big font)", fontScale = 1.5f)
@@ -41,7 +48,7 @@ fun UsersList() {
 @Composable
 fun UsersListPreview() {
     Test_username_APITheme {
-        UsersList()
+        UsersList(detailsVisible = {true}, detailsState = true)
 
     }
-}
+}*/

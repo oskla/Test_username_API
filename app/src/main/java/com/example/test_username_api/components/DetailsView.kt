@@ -20,7 +20,7 @@ import com.example.test_username_api.ui.theme.Test_username_APITheme
 
 @Composable
 fun DetailsView(
-    userData: List<UserItemData>,
+    userData: List<UserItemData>
 ) {
 
     var currentUser = usersData.first()
