@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Devices
@@ -31,7 +32,7 @@ fun SearchView(paddingVertical: Dp = 16.dp) {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
         modifier = Modifier
-            .padding(vertical = paddingVertical)
+            //.padding(vertical = paddingVertical)
             .height(IntrinsicSize.Max),
     ) {
         SearchBar()
@@ -39,13 +40,13 @@ fun SearchView(paddingVertical: Dp = 16.dp) {
     }
 }
 
-
-
 @Composable
 fun SearchBar(
     placeHolderColor: Color = MaterialTheme.colors.primaryVariant,
     bgColorSearchBar: Color = MaterialTheme.colors.surface,
-    singleLine: Boolean = true
+    singleLine: Boolean = true,
+    placeHolderText: String = "Search",
+    textFieldShape: Shape = RoundedCornerShape(4.dp)
 
 ) {
     var searchText by remember { mutableStateOf(TextFieldValue("")) }
@@ -60,8 +61,8 @@ fun SearchBar(
             onValueChange = { newText ->
                 searchText = newText
             },
-            placeholder = { Text(text = "Search", color = placeHolderColor) },
-            shape = RoundedCornerShape(4.dp),
+            placeholder = { Text(text = placeHolderText, color = placeHolderColor) },
+            shape = textFieldShape,
             singleLine = singleLine,
             colors = TextFieldDefaults.textFieldColors(
                 textColor = Color.Gray,
@@ -85,8 +86,8 @@ fun SquareButton(
 ) {
     Box(
         modifier = Modifier
-            .clip(shape = RoundedCornerShape(8.dp))
             .padding(padding)
+            .clip(shape = RoundedCornerShape(8.dp))
             .clickable { }
             .fillMaxHeight()
             .aspectRatio(1f)

@@ -53,7 +53,7 @@ fun App() {
     ) {
 
         if (usersListVisible) {
-            SearchView()
+            SearchAndFilter()
             UsersList()
         }
 

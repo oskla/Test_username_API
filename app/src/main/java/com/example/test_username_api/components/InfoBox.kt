@@ -36,7 +36,7 @@ fun InfoBox(
     userData: UserItemData,
     textColor: Color = MaterialTheme.colors.onBackground,
     cardShape: Shape = RoundedCornerShape(0.dp, 0.dp, 4.dp, 4.dp),
-    paddingAroundBox: Dp = 8.dp,
+    paddingAroundBox: Dp = 16.dp,
     fontSize: TextUnit = 18.sp,
     firstAndLastName: String = "Name",
     bgColor: Color = MaterialTheme.colors.surface
@@ -69,12 +69,13 @@ fun InfoBox(
 
                     InfoBoxDetailsRow(
                         text = userData.gender,
-                        textCategory = stringResource(R.string.gender)
+                        paddingText = PaddingValues(0.dp)
 
                     ) // TODO - add condition male/female
                     InfoBoxDetailsRow(
                         text = userData.email,
-                        textCategory = stringResource(R.string.email)
+                        paddingText = PaddingValues(0.dp)
+
                     )
                 }
                 Column(
@@ -83,7 +84,6 @@ fun InfoBox(
                 ) {
                     InfoBoxDetailsRow(
                         text = "SE",
-                        textCategory = stringResource(R.string.country)
                     )
                 }
             }

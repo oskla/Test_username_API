@@ -20,14 +20,16 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun InfoBoxDetailsRow(
     text: String,
-    textCategory: String,
+    textCategory: String? = null,
     textCategoryColor: Color = MaterialTheme.colors.primaryVariant,
     fontSize: TextUnit = 12.sp,
     paddingText: PaddingValues = PaddingValues(3.dp, 0.dp, 0.dp, 0.dp)
 
 ) {
     Row(verticalAlignment = Alignment.CenterVertically) {
-        Text(text = textCategory, fontSize = fontSize, modifier = Modifier.padding(paddingText), color = textCategoryColor)
+        if (textCategory != null) {
+            Text(text = textCategory, fontSize = fontSize, modifier = Modifier.padding(paddingText), color = textCategoryColor)
+        }
         Text(text = text, fontSize = fontSize, modifier = Modifier.padding(paddingText))
     }
 }
