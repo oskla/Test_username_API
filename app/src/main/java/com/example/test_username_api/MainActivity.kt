@@ -21,8 +21,8 @@ import com.example.test_username_api.ui.theme.Test_username_APITheme
 import com.example.test_username_api.viewmodel.UserViewModel
 
 class MainActivity : ComponentActivity() {
-    // TODO - function in ViewModel that adds first and last name
-    // TODO - build the Details Page
+
+    // TODO - Change package name
     // TODO - change font
     // TODO - migrate to M3
 
