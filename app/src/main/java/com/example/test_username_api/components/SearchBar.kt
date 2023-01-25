@@ -32,8 +32,7 @@ fun SearchView(paddingVertical: Dp = 16.dp) {
         horizontalArrangement = Arrangement.Center,
         modifier = Modifier
             .padding(vertical = paddingVertical)
-            .height(IntrinsicSize.Max)
-            .fillMaxWidth(),
+            .height(IntrinsicSize.Max),
     ) {
         SearchBar()
         SquareButton()
