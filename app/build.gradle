@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.test_username_api'
+    namespace 'com.example.randomuser'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.test_username_api"
+        applicationId "com.example.randomuser"
         minSdk 28
         targetSdk 33
         versionCode 1

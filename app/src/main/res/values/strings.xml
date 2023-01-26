@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Test_username_API</string>
+    <string name="app_name">randomuser</string>
     <string name="name">Name: </string>
     <string name="email">Email: </string>
     <string name="gender">Gender: </string>
