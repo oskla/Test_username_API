@@ -24,6 +24,11 @@ class UserViewModel : ViewModel() {
         }
     }
 
+    fun sortByViews() {
+        visibleUsers.sortByDescending { it.pageViews }
+
+    }
+
     fun getFilteredUsers(selectedFilter: MutableState<Filter?>) {
         val users = resultsResponse?.results
         visibleUsers.clear()
