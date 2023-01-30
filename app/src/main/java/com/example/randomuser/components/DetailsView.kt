@@ -6,6 +6,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBackIosNew
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Devices
@@ -24,7 +25,7 @@ fun DetailsView(
 ) {
     var currentUser = usersData.first()
 
-    Column {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
         SquareButton(
             modifier = Modifier.padding(vertical = 16.dp).size(42.dp),
             icon = Icons.Filled.ArrowBackIosNew,

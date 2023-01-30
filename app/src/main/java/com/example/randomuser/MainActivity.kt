@@ -23,7 +23,6 @@ import com.example.randomuser.viewmodel.UserViewModel
 
 class MainActivity : ComponentActivity() {
 
-    // TODO - Change package name
     // TODO - change font
     // TODO - migrate to M3
     // TODO - Move visibility-state out from UserItem component
