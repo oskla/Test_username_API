@@ -1,6 +1,5 @@
 package com.example.randomuser.components
 
-import android.content.res.Configuration
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -10,17 +9,12 @@ import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.randomuser.data.UserItemData
 import com.example.randomuser.helpers.addFirstAndLastName
-import com.example.randomuser.ui.theme.randomuserTheme
 import androidx.compose.ui.graphics.Color as Color
 
 @Composable
@@ -46,6 +40,7 @@ fun UserItem(
                 detailsState.value = true
                 userListState.value = false
                 currentUser.value = userData
+                currentUser.value!!.pageViews++
             },
         shape = cardCornerRadius,
         elevation = cardElevation

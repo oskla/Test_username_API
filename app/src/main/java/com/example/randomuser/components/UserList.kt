@@ -33,7 +33,7 @@ fun UsersList(
                 cardPaddingHorizontal = 0.dp,
                 detailsState = detailsState,
                 userListState = userListState,
-                currentUser = currentUser
+                currentUser = currentUser,
             )
         }
         // }
@@ -54,7 +54,7 @@ fun UsersListPreview() {
         UsersList(
             detailsState = detailsState,
             userListState = userListState,
-            currentUser = mutableStateOf(currentUser.value!!)
+            currentUser = mutableStateOf(currentUser.value!!),
         )
     }
 }
