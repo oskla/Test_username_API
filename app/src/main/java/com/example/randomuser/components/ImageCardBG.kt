@@ -26,7 +26,6 @@ fun ImageCardBG(
     currentUser: MutableState<UserItemData?>?
 
 ) {
-
     AsyncImage(
         model = userData?.picture ?: currentUser?.value?.picture,
         contentDescription = "image",

@@ -15,21 +15,16 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.randomuser.data.UserItemData
-import com.example.randomuser.data.getUserById
-import com.example.randomuser.data.usersData
 import com.example.randomuser.helpers.addFirstAndLastName
 import com.example.randomuser.ui.theme.randomuserTheme
 
 @Composable
 fun DetailsView(
-   // userData: List<UserItemData>,
     onClick: () -> Unit,
     currentUser: MutableState<UserItemData?>
 ) {
-    //var currentUser = usersData.first()
-
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        SquareButton(
+        SquareButton( // Go back to main page
             modifier = Modifier.padding(vertical = 16.dp).size(42.dp),
             icon = Icons.Filled.ArrowBackIosNew,
             padding = PaddingValues(0.dp),

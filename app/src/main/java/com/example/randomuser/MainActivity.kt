@@ -66,7 +66,6 @@ fun App() {
 
         if (detailsViewVisible.value) {
             DetailsView(
-                //userData = usersData,
                 onClick = {
                     detailsViewVisible.value = false
                     usersListVisible.value = true
