@@ -2,8 +2,10 @@ package com.example.randomuser.components
 
 import android.annotation.SuppressLint
 import android.content.res.Configuration
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBackIosNew
 import androidx.compose.runtime.*
@@ -31,15 +33,20 @@ fun DetailsView(
             padding = PaddingValues(0.dp),
             onClick = onClick
         )
-
-        ImageCardBG(
-            currentUser = currentUser,
-            contentScale = ContentScale.FillWidth,
-            userData = null,
+        Card(
             modifier = Modifier
-                .wrapContentHeight()
-                .fillMaxWidth()
-        )
+                .fillMaxWidth(),
+            shape = RoundedCornerShape(6.dp, 6.dp, 0.dp, 0.dp)
+        ) {
+            ImageCardBG(
+                currentUser = currentUser,
+                contentScale = ContentScale.FillWidth,
+                userData = null,
+                modifier = Modifier
+                    .wrapContentHeight()
+                    .fillMaxWidth(),
+            )
+        }
 
         currentUser.value?.let {
             DetailsBox(
