@@ -16,11 +16,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.example.randomuser.data.Filter
 import com.example.randomuser.data.filters
 
 @Composable
 fun FilterButtons(
-    selectedFilter: MutableState<String>,
+    selectedFilter: MutableState<Filter?>,
     onClickFilter: () -> Unit
 ) {
     LazyRow(
@@ -32,7 +33,8 @@ fun FilterButtons(
             IconButton(
                 btnText = item.text,
                 selectedFilter = selectedFilter,
-                onClickFilter = onClickFilter
+                onClickFilter = onClickFilter,
+                item = item
             )
         }
     }
@@ -47,8 +49,9 @@ fun IconButton(
     btnShape: RoundedCornerShape = RoundedCornerShape(4.dp),
     paddingVertical: Dp = 8.dp,
     paddingHorizontal: Dp = 16.dp,
-    selectedFilter: MutableState<String>,
-    onClickFilter: () -> Unit
+    selectedFilter: MutableState<Filter?>,
+    onClickFilter: () -> Unit,
+    item: Filter
 ) {
     var selected by rememberSaveable { mutableStateOf(false) }
 
@@ -58,7 +61,7 @@ fun IconButton(
             .background(if (selected) btnBgSelected else btnBg)
             .padding(horizontal = paddingHorizontal, vertical = paddingVertical)
             .clickable(onClick = {
-                selectedFilter.value = btnText
+                selectedFilter.value = item
                 selected = !selected
                 onClickFilter()
             })

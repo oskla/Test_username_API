@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.example.randomuser.components.DetailsView
 import com.example.randomuser.components.SearchAndFilter
 import com.example.randomuser.components.UsersList
+import com.example.randomuser.data.Filter
 import com.example.randomuser.model.Results
 import com.example.randomuser.ui.theme.randomuserTheme
 import com.example.randomuser.viewmodel.UserViewModel
@@ -46,16 +47,21 @@ fun App(userViewModel: UserViewModel) {
     val usersListVisible = rememberSaveable { mutableStateOf(true) }
     val detailsViewVisible = rememberSaveable { mutableStateOf(false) }
     val currentUser = rememberSaveable { mutableStateOf<Results?>(null) }
-    val visibleUsers = userViewModel.visibleUsers
-    var selectedFilter = rememberSaveable { mutableStateOf("") }
 
+    val selectedFilter = rememberSaveable { mutableStateOf<Filter?>(null) }
+    val visibleUsers = userViewModel.visibleUsers
+    val activeFilters = userViewModel.activeFilters
     Column(
         modifier = Modifier.padding(horizontal = 16.dp)
     ) {
         if (usersListVisible.value) {
             SearchAndFilter(
                 selectedFilter = selectedFilter,
-                onClickFilter = { userViewModel.filterGender(selectedFilter.value) }
+                onClickFilter = {
+                    // selectedFilter.value?.let { activeFilters.add(it) }
+                    selectedFilter.value?.selected = !selectedFilter.value?.selected!!
+                    userViewModel.getFilteredUsers(selectedFilter)
+                }
             )
             UsersList(
                 detailsState = detailsViewVisible,
