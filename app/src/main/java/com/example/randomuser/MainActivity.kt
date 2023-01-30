@@ -50,7 +50,6 @@ fun App(userViewModel: UserViewModel) {
 
     val selectedFilter = rememberSaveable { mutableStateOf<Filter?>(null) }
     val visibleUsers = userViewModel.visibleUsers
-    val sortByViews = userViewModel.sortByViews()
 
     Column(
         modifier = Modifier.padding(horizontal = 16.dp)
