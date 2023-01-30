@@ -26,7 +26,6 @@ class UserViewModel : ViewModel() {
 
     fun sortByViews() {
         visibleUsers.sortByDescending { it.pageViews }
-
     }
 
     fun getFilteredUsers(selectedFilter: MutableState<Filter?>) {
@@ -41,6 +40,7 @@ class UserViewModel : ViewModel() {
             activeFilters.remove(selectedFilter.value!!)
         }
 
+        // if all filter buttons are deselected i think you want to see all of the results.
         if (selectedFilter.value?.selected == false && selectedFilter.value?.selected == false) {
             if (users != null) {
                 visibleUsers.addAll(users)
