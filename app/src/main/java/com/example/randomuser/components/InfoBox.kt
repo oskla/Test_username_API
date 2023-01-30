@@ -51,7 +51,7 @@ fun InfoBox(
                 ) {
                     Text(
                         text = firstAndLastName,
-                        style = TextStyle(fontSize = fontSize),
+                        fontSize = fontSize,
                         color = textColor
                     )
 
