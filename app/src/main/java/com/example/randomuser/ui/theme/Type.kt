@@ -18,17 +18,17 @@ val Typography = Typography(
         fontFamily = SpaceGroteskFontFamily,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp
-    )
-    /* Other default text styles to override
+    ),
+
     button = TextStyle(
-        fontFamily = FontFamily.Default,
+        fontFamily = SpaceGroteskFontFamily,
         fontWeight = FontWeight.W500,
         fontSize = 14.sp
     ),
     caption = TextStyle(
-        fontFamily = FontFamily.Default,
+        fontFamily = SpaceGroteskFontFamily,
         fontWeight = FontWeight.Normal,
         fontSize = 12.sp
     )
-    */
+
 )
