@@ -18,13 +18,11 @@ import com.example.randomuser.components.DetailsView
 import com.example.randomuser.components.SearchAndFilter
 import com.example.randomuser.components.UsersList
 import com.example.randomuser.data.UserItemData
-import com.example.randomuser.data.usersData
 import com.example.randomuser.ui.theme.randomuserTheme
 import com.example.randomuser.viewmodel.UserViewModel
 
 class MainActivity : ComponentActivity() {
 
-    // TODO - change font
     // TODO - migrate to M3
     // TODO - Move visibility-state out from UserItem component
 
