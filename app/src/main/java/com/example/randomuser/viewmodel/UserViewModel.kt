@@ -36,6 +36,12 @@ class UserViewModel : ViewModel() {
             activeFilters.remove(selectedFilter.value!!)
         }
 
+        if (selectedFilter.value?.selected == false && selectedFilter.value?.selected == false) {
+            if (users != null) {
+                visibleUsers.addAll(users)
+            }
+        }
+
         for (filter in activeFilters) {
             if (filter.text == "Male") {
                 val maleUsers = users?.filter { it.gender == "male" }
