@@ -23,12 +23,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.randomuser.R
 import com.example.randomuser.data.UserItemData
+import com.example.randomuser.model.Results
 import com.example.randomuser.ui.theme.randomuserTheme
 
 
 @Composable
 fun DetailsBox(
-    userData: UserItemData,
+    userData: Results,
     modifier: Modifier = Modifier.fillMaxWidth(),
     cardElevation: Dp = 6.dp,
     cardShape: RoundedCornerShape = RoundedCornerShape(8.dp),
@@ -60,11 +61,11 @@ fun DetailsBox(
                     verticalArrangement = Arrangement.SpaceBetween
                 ) {
                     InfoBoxDetailsRow(text = userData.gender, textCategory = stringResource(R.string.gender), fontSize = 14.sp)
-                    InfoBoxDetailsRow(text = userData.email, textCategory = stringResource(R.string.email), fontSize = 14.sp)
-                    InfoBoxDetailsRow(text = userData.age.toString(), textCategory = stringResource(R.string.age), fontSize = 14.sp)
+                    InfoBoxDetailsRow(text = userData.email, textCategory = stringResource(R.string.email), fontSize = 14.sp, maxLines = 2)
+                    InfoBoxDetailsRow(text = userData.dob.age.toString(), textCategory = stringResource(R.string.age), fontSize = 14.sp)
                 }
                 Column(verticalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxHeight()) {
-                    InfoBoxDetailsRow(text = userData.country, textCategory = stringResource(R.string.country), fontSize = 14.sp)
+                    InfoBoxDetailsRow(text = userData.nat, textCategory = stringResource(R.string.country), fontSize = 14.sp)
                     InfoBoxDetailsRow(text = userData.pageViews.toString(), textCategory = stringResource(R.string.pageviews), fontSize = 14.sp)
                 }
             }
@@ -72,6 +73,7 @@ fun DetailsBox(
     }
 }
 
+/*
 @Preview("ComponentPreview (light)", showBackground = true)
 @Preview("ComponentPreview (dark)", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Preview("ComponentPreview (big font)", fontScale = 1.5f)
@@ -82,3 +84,4 @@ fun DetailsBoxPreview() {
         DetailsBox(userData = UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://randomuser.me/api/portraits/men/57.jpg", 54, "male", 4))
     }
 }
+*/

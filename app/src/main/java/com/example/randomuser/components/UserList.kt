@@ -15,31 +15,36 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.randomuser.data.UserItemData
 import com.example.randomuser.data.usersData
+import com.example.randomuser.model.Results
 import com.example.randomuser.ui.theme.randomuserTheme
+import com.example.randomuser.model.Result as Result
 
 @Composable
 fun UsersList(
     detailsState: MutableState<Boolean>,
     userListState: MutableState<Boolean>,
-    currentUser: MutableState<UserItemData?>
+    currentUser: MutableState<Results?>,
+    usersData: Result?
 ) {
     LazyColumn(verticalArrangement = Arrangement.spacedBy(16.dp)) {
-        val usersData = usersData
-        //  userViewModel.resultsResponse?.let {
-        itemsIndexed(items = usersData) { _, item ->
-            UserItem(
-                userData = item,
-                cardHeight = 250.dp,
-                cardPaddingHorizontal = 0.dp,
-                detailsState = detailsState,
-                userListState = userListState,
-                currentUser = currentUser,
-            )
+
+
+        if (usersData != null) {
+            itemsIndexed(items = usersData.results) { _, item ->
+                UserItem(
+                    userData = item,
+                    cardHeight = 250.dp,
+                    cardPaddingHorizontal = 0.dp,
+                    detailsState = detailsState,
+                    userListState = userListState,
+                    currentUser = currentUser,
+                )
+            }
         }
-        // }
     }
 }
 
+/*
 @SuppressLint("UnrememberedMutableState")
 @Preview("ComponentPreview (light)", showBackground = true)
 @Preview("ComponentPreview (dark)", uiMode = Configuration.UI_MODE_NIGHT_YES)
@@ -58,3 +63,4 @@ fun UsersListPreview() {
         )
     }
 }
+*/

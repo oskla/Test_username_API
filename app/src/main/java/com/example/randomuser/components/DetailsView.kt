@@ -16,12 +16,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.randomuser.data.UserItemData
 import com.example.randomuser.helpers.addFirstAndLastName
+import com.example.randomuser.model.Results
 import com.example.randomuser.ui.theme.randomuserTheme
 
 @Composable
 fun DetailsView(
     onClick: () -> Unit,
-    currentUser: MutableState<UserItemData?>
+    currentUser: MutableState<Results?>
 ) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         SquareButton( // Go back to main page
@@ -43,13 +44,14 @@ fun DetailsView(
         currentUser.value?.let {
             DetailsBox(
                 userData = it,
-                firstAndLastName = addFirstAndLastName(currentUser.value!!.firstName, currentUser.value!!.lastName),
+                firstAndLastName = addFirstAndLastName(currentUser.value!!.name.first, currentUser.value!!.name.last),
                 cardShape = RoundedCornerShape(0.dp, 0.dp, 8.dp, 8.dp)
             )
         }
     }
 }
 
+/*
 @SuppressLint("UnrememberedMutableState")
 @Preview("ComponentPreview (light)", showBackground = true)
 @Preview("ComponentPreview (dark)", uiMode = Configuration.UI_MODE_NIGHT_YES)
@@ -62,3 +64,4 @@ fun DetailsPreview() {
         DetailsView(onClick = {}, currentUser = mutableStateOf(currentUser.value!!))
     }
 }
+*/

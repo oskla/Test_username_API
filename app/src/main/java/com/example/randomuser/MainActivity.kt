@@ -14,10 +14,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModelProvider
 import com.example.randomuser.components.DetailsView
 import com.example.randomuser.components.SearchAndFilter
 import com.example.randomuser.components.UsersList
 import com.example.randomuser.data.UserItemData
+import com.example.randomuser.model.Results
 import com.example.randomuser.ui.theme.randomuserTheme
 import com.example.randomuser.viewmodel.UserViewModel
 
@@ -37,7 +39,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    App()
+                    App(userViewModel)
                 }
             }
         }
@@ -45,10 +47,11 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun App() {
+fun App(userViewModel: UserViewModel) {
     val usersListVisible = rememberSaveable { mutableStateOf(true) }
     val detailsViewVisible = rememberSaveable { mutableStateOf(false) }
-    val currentUser = rememberSaveable { mutableStateOf<UserItemData?>(null) }
+    val currentUser = rememberSaveable { mutableStateOf<Results?>(null) }
+    val userData = userViewModel.resultsResponse
 
     Column(
         modifier = Modifier.padding(horizontal = 16.dp)
@@ -58,7 +61,8 @@ fun App() {
             UsersList(
                 detailsState = detailsViewVisible,
                 userListState = usersListVisible,
-                currentUser = currentUser
+                currentUser = currentUser,
+                usersData = userData
             )
         }
 
@@ -67,6 +71,7 @@ fun App() {
                 onClick = {
                     detailsViewVisible.value = false
                     usersListVisible.value = true
+                    println("userviewmodel: ${userData?.results?.first()?.email}")
                 },
                 currentUser = currentUser
             )
@@ -74,11 +79,12 @@ fun App() {
     }
 }
 
-@Preview("ComponentPreview (light)", showBackground = true)
+/*@Preview("ComponentPreview (light)", showBackground = true)
 @Preview("ComponentPreview (dark)", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Preview("ComponentPreview (big font)", fontScale = 1.5f)
 @Preview("ComponentPreview (large screen)", device = Devices.PIXEL_C)
 @Composable
 fun ComponentPreview() {
+   // val userViewModel: UserViewModel()
     App()
-}
+}*/

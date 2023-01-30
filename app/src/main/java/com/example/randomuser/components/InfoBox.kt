@@ -19,11 +19,12 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.randomuser.data.UserItemData
+import com.example.randomuser.model.Results
 import com.example.randomuser.ui.theme.randomuserTheme
 
 @Composable
 fun InfoBox(
-    userData: UserItemData,
+    userData: Results,
     textColor: Color = MaterialTheme.colors.onBackground,
     cardShape: Shape = RoundedCornerShape(0.dp, 0.dp, 4.dp, 4.dp),
     paddingAroundBox: Dp = 16.dp,
@@ -73,7 +74,7 @@ fun InfoBox(
                     modifier = Modifier.wrapContentHeight().align(Alignment.Top)
                 ) {
                     InfoBoxDetailsRow(
-                        text = userData.country
+                        text = userData.nat
                     )
                 }
             }
@@ -81,6 +82,7 @@ fun InfoBox(
     }
 }
 
+/*
 @Preview("ComponentPreview (light)", showBackground = true)
 @Preview("ComponentPreview (dark)", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Preview("ComponentPreview (big font)", fontScale = 1.5f)
@@ -91,3 +93,4 @@ fun DefaultPreview() {
         InfoBox(UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://randomuser.me/api/portraits/men/57.jpg", 54, "male", 4), MaterialTheme.colors.onBackground, bgColor = MaterialTheme.colors.surface)
     }
 }
+*/

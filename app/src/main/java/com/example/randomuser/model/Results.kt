@@ -12,5 +12,6 @@ data class Results(
     val nat: String,
     val phone: String,
     val picture: Picture,
-    val registered: Registered
+    val registered: Registered,
+    var pageViews: Int = 0
 )

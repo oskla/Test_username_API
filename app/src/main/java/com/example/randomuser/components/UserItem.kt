@@ -16,10 +16,11 @@ import androidx.compose.ui.unit.dp
 import com.example.randomuser.data.UserItemData
 import com.example.randomuser.helpers.addFirstAndLastName
 import androidx.compose.ui.graphics.Color as Color
+import com.example.randomuser.model.Results as Results
 
 @Composable
 fun UserItem(
-    userData: UserItemData,
+    userData: Results,
     cardHeight: Dp,
     cardPaddingHorizontal: Dp,
     cardCornerRadius: RoundedCornerShape = RoundedCornerShape(12.dp, 12.dp, 12.dp, 12.dp),
@@ -28,7 +29,7 @@ fun UserItem(
     userListState: MutableState<Boolean>,
     infoBoxBgColor: Color = MaterialTheme.colors.surface,
     infoBoxTextColor: Color = MaterialTheme.colors.onBackground,
-    currentUser: MutableState<UserItemData?>
+    currentUser: MutableState<Results?>
 
 ) {
     Card(
@@ -49,7 +50,7 @@ fun UserItem(
         InfoBox(
             userData = userData,
             textColor = infoBoxTextColor,
-            firstAndLastName = addFirstAndLastName(userData.firstName, userData.lastName),
+            firstAndLastName = addFirstAndLastName(userData.name.first, userData.name.last),
             bgColor = infoBoxBgColor
         )
     }

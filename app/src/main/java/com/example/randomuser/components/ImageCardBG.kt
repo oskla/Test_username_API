@@ -15,19 +15,20 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.randomuser.data.UserItemData
+import com.example.randomuser.model.Results
 import com.example.randomuser.ui.theme.randomuserTheme
 
 @Composable
 fun ImageCardBG(
-    userData: UserItemData?,
+    userData: Results?,
     clipPictureShape: RoundedCornerShape = RoundedCornerShape(8.dp, 8.dp, 0.dp, 0.dp),
     contentScale: ContentScale,
     modifier: Modifier = Modifier.clip(clipPictureShape),
-    currentUser: MutableState<UserItemData?>?
+    currentUser: MutableState<Results?>?
 
 ) {
     AsyncImage(
-        model = userData?.picture ?: currentUser?.value?.picture,
+        model = userData?.picture?.large ?: currentUser?.value?.picture?.large,
         contentDescription = "image",
         contentScale = contentScale,
         modifier = Modifier
@@ -35,7 +36,7 @@ fun ImageCardBG(
     )
 }
 
-@SuppressLint("UnrememberedMutableState")
+/*@SuppressLint("UnrememberedMutableState")
 @Preview("ComponentPreview (light)", showBackground = true)
 @Preview("ComponentPreview (dark)", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Preview("ComponentPreview (big font)", fontScale = 1.5f)
@@ -47,4 +48,4 @@ fun ImgPreview() {
 
         ImageCardBG(currentUser = mutableStateOf(currentUser.value!!), userData = null, contentScale = ContentScale.Crop)
     }
-}
+}*/
