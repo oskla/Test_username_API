@@ -1,5 +1,6 @@
 package com.example.randomuser.components
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -13,6 +14,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 @Composable
 fun InfoBoxDetailsRow(
@@ -21,12 +23,13 @@ fun InfoBoxDetailsRow(
     textCategoryColor: Color = MaterialTheme.colors.primaryVariant,
     fontSize: TextUnit = 12.sp,
     paddingText: PaddingValues = PaddingValues(3.dp, 0.dp, 0.dp, 0.dp),
-    maxLines: Int = 1
+    maxLines: Int = 1,
+    textOverFlow: TextOverflow = TextOverflow.Ellipsis
 
 ) {
-    Row(verticalAlignment = Alignment.CenterVertically) {
+    Column() {
         if (textCategory != null) {
-            Text(text = textCategory, fontSize = fontSize, modifier = Modifier.padding(paddingText), color = textCategoryColor, maxLines = maxLines, overflow = TextOverflow.Ellipsis)
+            Text(text = textCategory, fontSize = fontSize, modifier = Modifier.padding(paddingText), color = textCategoryColor, maxLines = maxLines, overflow = textOverFlow)
         }
         Text(text = text, fontSize = fontSize, modifier = Modifier.padding(paddingText))
     }

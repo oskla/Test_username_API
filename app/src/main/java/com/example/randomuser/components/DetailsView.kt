@@ -44,7 +44,7 @@ fun DetailsView(
                 userData = null,
                 modifier = Modifier
                     .wrapContentHeight()
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
             )
         }
 
