@@ -73,7 +73,7 @@ fun InfoBox(
                     modifier = Modifier.wrapContentHeight().align(Alignment.Top)
                 ) {
                     InfoBoxDetailsRow(
-                        text = "SE"
+                        text = userData.country
                     )
                 }
             }

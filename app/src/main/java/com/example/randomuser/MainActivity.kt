@@ -1,4 +1,4 @@
-package com.example.test_username_api
+package com.example.randomuser
 
 import android.content.res.Configuration
 import android.os.Bundle
@@ -14,23 +14,26 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.test_username_api.components.*
-import com.example.test_username_api.data.usersData
-import com.example.test_username_api.ui.theme.Test_username_APITheme
-import com.example.test_username_api.viewmodel.UserViewModel
+import com.example.randomuser.components.DetailsView
+import com.example.randomuser.components.SearchAndFilter
+import com.example.randomuser.components.UsersList
+import com.example.randomuser.data.usersData
+import com.example.randomuser.ui.theme.randomuserTheme
+import com.example.randomuser.viewmodel.UserViewModel
 
 class MainActivity : ComponentActivity() {
 
     // TODO - Change package name
     // TODO - change font
     // TODO - migrate to M3
+    // TODO - Move visibility-state out from UserItem component
 
     private val userViewModel by viewModels<UserViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         userViewModel.setup()
         super.onCreate(savedInstanceState)
         setContent {
-            Test_username_APITheme {
+            randomuserTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
