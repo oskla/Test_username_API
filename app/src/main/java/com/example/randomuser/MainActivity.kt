@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.example.randomuser.components.DetailsView
 import com.example.randomuser.components.SearchAndFilter
 import com.example.randomuser.components.UsersList
+import com.example.randomuser.data.UserItemData
 import com.example.randomuser.data.usersData
 import com.example.randomuser.ui.theme.randomuserTheme
 import com.example.randomuser.viewmodel.UserViewModel
@@ -49,6 +50,7 @@ class MainActivity : ComponentActivity() {
 fun App() {
     val usersListVisible = rememberSaveable { mutableStateOf(true) }
     val detailsViewVisible = rememberSaveable { mutableStateOf(false) }
+    val currentUser = rememberSaveable { mutableStateOf<UserItemData?>(null) }
 
     Column(
         modifier = Modifier.padding(horizontal = 16.dp)
@@ -57,15 +59,20 @@ fun App() {
             SearchAndFilter()
             UsersList(
                 detailsState = detailsViewVisible,
-                userListState = usersListVisible
+                userListState = usersListVisible,
+                currentUser = currentUser
             )
         }
 
         if (detailsViewVisible.value) {
-            DetailsView(userData = usersData, onClick = {
-                detailsViewVisible.value = false
-                usersListVisible.value = true
-            })
+            DetailsView(
+                //userData = usersData,
+                onClick = {
+                    detailsViewVisible.value = false
+                    usersListVisible.value = true
+                },
+                currentUser = currentUser
+            )
         }
     }
 }

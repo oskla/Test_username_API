@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.randomuser.data.UserItemData
 import com.example.randomuser.model.Results
 import com.example.randomuser.repo.Repo
 import kotlinx.coroutines.Dispatchers
@@ -14,7 +15,7 @@ import com.example.randomuser.model.Result as Result
 class UserViewModel : ViewModel() {
 
     var resultsResponse: Result? by mutableStateOf(null)
-    var currentUser: Results? by mutableStateOf(null)
+    private var currentUser: UserItemData? by mutableStateOf(null)
 
     fun setup() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -24,4 +25,9 @@ class UserViewModel : ViewModel() {
             println(response)
         }
     }
+
+    fun setToCurrentUser(user: UserItemData) {
+        currentUser = user
+    }
+
 }

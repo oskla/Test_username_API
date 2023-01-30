@@ -1,6 +1,5 @@
 package com.example.randomuser.components
 
-import android.annotation.SuppressLint
 import android.content.res.Configuration
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,6 +11,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Devices
@@ -33,7 +33,8 @@ fun UserItem(
     detailsState: MutableState<Boolean>,
     userListState: MutableState<Boolean>,
     infoBoxBgColor: Color = MaterialTheme.colors.surface,
-    infoBoxTextColor: Color = MaterialTheme.colors.onBackground
+    infoBoxTextColor: Color = MaterialTheme.colors.onBackground,
+    currentUser: MutableState<UserItemData?>
 
 ) {
     Card(
@@ -41,14 +42,15 @@ fun UserItem(
             .fillMaxWidth()
             .height(cardHeight)
             .padding(horizontal = cardPaddingHorizontal)
-            .clickable(onClick = {
+            .clickable {
                 detailsState.value = true
                 userListState.value = false
-            }),
+                currentUser.value = userData
+            },
         shape = cardCornerRadius,
         elevation = cardElevation
     ) {
-        ImageCardBG(userData = userData, contentScale = ContentScale.Crop)
+        ImageCardBG(userData = userData, contentScale = ContentScale.Crop, currentUser = null)
         InfoBox(
             userData = userData,
             textColor = infoBoxTextColor,
@@ -58,20 +60,25 @@ fun UserItem(
     }
 }
 
-@SuppressLint("UnrememberedMutableState")
+/*
 @Preview("ComponentPreview (light)", showBackground = true)
 @Preview("ComponentPreview (dark)", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Preview("ComponentPreview (big font)", fontScale = 1.5f)
 @Preview("ComponentPreview (large screen)", device = Devices.PIXEL_C)
 @Composable
 fun ItemPreview() {
+    val detailsState = rememberSaveable { mutableStateOf(true) }
+    val userListState = rememberSaveable { mutableStateOf(true) }
+    val currentUser = rememberSaveable { mutableStateOf(UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://randomuser.me/api/portraits/men/57.jpg", 54, "male", 4)) }
     randomuserTheme {
         UserItem(
             userData = UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://randomuser.me/api/portraits/men/57.jpg", 54, "male", 4),
             cardHeight = 250.dp,
             cardPaddingHorizontal = 16.dp,
-            detailsState = mutableStateOf(true),
-            userListState = mutableStateOf(true)
+            detailsState = detailsState,
+            userListState = userListState,
+            currentUser = currentUser
         )
     }
 }
+*/
