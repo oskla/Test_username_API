@@ -3,12 +3,14 @@ package com.example.randomuser.components
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
@@ -35,7 +37,8 @@ fun SearchBar(
     bgColorSearchBar: Color = MaterialTheme.colors.surface,
     singleLine: Boolean = true,
     placeHolderText: String = "Search",
-    textFieldShape: Shape = RoundedCornerShape(4.dp)
+    textFieldShape: Shape = RoundedCornerShape(4.dp),
+    onSearchClick: (String) -> Unit
 
 ) {
     var searchText by remember { mutableStateOf(TextFieldValue("")) }
@@ -53,6 +56,7 @@ fun SearchBar(
             placeholder = { Text(text = placeHolderText, color = placeHolderColor) },
             shape = textFieldShape,
             singleLine = singleLine,
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
             colors = TextFieldDefaults.textFieldColors(
                 textColor = Color.Gray,
                 disabledTextColor = Color.Transparent,
