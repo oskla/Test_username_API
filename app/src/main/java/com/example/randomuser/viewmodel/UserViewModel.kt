@@ -6,7 +6,6 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.randomuser.data.UserItemData
-import com.example.randomuser.model.Results
 import com.example.randomuser.repo.Repo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -19,15 +18,16 @@ class UserViewModel : ViewModel() {
 
     fun setup() {
         viewModelScope.launch(Dispatchers.IO) {
-            val response = Repo().fetchAllUsersRetrofit()
-
-            resultsResponse = response
-            println(response)
+            try {
+                val response = Repo().fetchAllUsersRetrofit()
+                resultsResponse = response
+            } catch (e: Exception) {
+                println("Error: $e")
+            }
         }
     }
 
     fun setToCurrentUser(user: UserItemData) {
         currentUser = user
     }
-
 }
