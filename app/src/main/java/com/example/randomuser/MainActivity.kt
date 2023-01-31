@@ -58,7 +58,6 @@ fun App(userViewModel: UserViewModel) {
             SearchAndFilter(
                 selectedFilter = selectedFilter,
                 onClickFilter = {
-                    // selectedFilter.value?.let { activeFilters.add(it) }
                     selectedFilter.value?.selected = !selectedFilter.value?.selected!!
                     userViewModel.getFilteredUsers(selectedFilter)
                 }
