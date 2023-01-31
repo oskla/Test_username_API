@@ -30,13 +30,11 @@ class UserViewModel : ViewModel() {
 
         if (selectedFilter.value?.selected == true) {
             activeFilters.add(selectedFilter.value ?: Filter(""))
-        }
-
-        if (selectedFilter.value?.selected == false) {
+        } else {
             activeFilters.remove(selectedFilter.value ?: Filter(""))
         }
 
-        if (selectedFilter.value?.selected == false && selectedFilter.value?.selected == false) {
+        if (activeFilters.isEmpty()) {
             if (users != null) {
                 visibleUsers.addAll(users)
             }
@@ -58,25 +56,4 @@ class UserViewModel : ViewModel() {
             }
         }
     }
-
-/*    fun filterGender(gender: Filter?) {
-        println(gender)
-        if (gender == "Male") {
-            visibleUsers.clear()
-            visibleUsers = resultsResponse?.results?.filter { it.gender == "male" }!!.toMutableStateList()
-        }
-        if (gender == "Female") {
-            visibleUsers.clear()
-            visibleUsers = resultsResponse?.results?.filter { it.gender == "female" }!!.toMutableStateList()
-
-
-        }
-        if (gender == null) {
-            return
-        }
-    }*/
-
-/*    fun setToCurrentUser(user: UserItemData) {
-        currentUser = user
-    }*/
 }
