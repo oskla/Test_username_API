@@ -1,6 +1,5 @@
 package com.example.randomuser
 
-import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -9,17 +8,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.lifecycle.ViewModelProvider
-import com.example.randomuser.components.DetailsView
-import com.example.randomuser.components.SearchAndFilter
-import com.example.randomuser.components.UsersList
-import com.example.randomuser.data.UserItemData
-import com.example.randomuser.model.Results
+import com.example.randomuser.components.App
 import com.example.randomuser.ui.theme.randomuserTheme
 import com.example.randomuser.viewmodel.UserViewModel
 
@@ -42,39 +32,6 @@ class MainActivity : ComponentActivity() {
                     App(userViewModel)
                 }
             }
-        }
-    }
-}
-
-@Composable
-fun App(userViewModel: UserViewModel) {
-    val usersListVisible = rememberSaveable { mutableStateOf(true) }
-    val detailsViewVisible = rememberSaveable { mutableStateOf(false) }
-    val currentUser = rememberSaveable { mutableStateOf<Results?>(null) }
-    val userData = userViewModel.resultsResponse
-
-    Column(
-        modifier = Modifier.padding(horizontal = 16.dp)
-    ) {
-        if (usersListVisible.value) {
-            SearchAndFilter()
-            UsersList(
-                detailsState = detailsViewVisible,
-                userListState = usersListVisible,
-                currentUser = currentUser,
-                usersData = userData
-            )
-        }
-
-        if (detailsViewVisible.value) {
-            DetailsView(
-                onClick = {
-                    detailsViewVisible.value = false
-                    usersListVisible.value = true
-                    println("userviewmodel: ${userData?.results?.first()?.email}")
-                },
-                currentUser = currentUser
-            )
         }
     }
 }
