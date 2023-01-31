@@ -40,7 +40,7 @@ class UserViewModel : ViewModel() {
             visibleUsers.addAll(users)
         } else {
             visibleUsers.addAll(
-                users.filter { user ->
+                users.asSequence().filter { user ->
                     activeFilters.any { filter -> user.gender.lowercase() == filter.text.lowercase() }
                 }
             )
