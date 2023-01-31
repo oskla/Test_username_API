@@ -15,6 +15,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.randomuser.data.UserItemData
 import com.example.randomuser.data.usersData
+import com.example.randomuser.exampledata.exampleResult
+import com.example.randomuser.exampledata.exampleResults
 import com.example.randomuser.model.Results
 import com.example.randomuser.ui.theme.randomuserTheme
 import com.example.randomuser.model.Result as Result
@@ -44,7 +46,6 @@ fun UsersList(
     }
 }
 
-/*
 @SuppressLint("UnrememberedMutableState")
 @Preview("ComponentPreview (light)", showBackground = true)
 @Preview("ComponentPreview (dark)", uiMode = Configuration.UI_MODE_NIGHT_YES)
@@ -54,13 +55,12 @@ fun UsersList(
 fun UsersListPreview() {
     val detailsState = rememberSaveable { mutableStateOf(true) }
     val userListState = rememberSaveable { mutableStateOf(true) }
-    val currentUser = rememberSaveable { mutableStateOf(UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://randomuser.me/api/portraits/men/57.jpg", 54, "male", 4)) }
     randomuserTheme {
         UsersList(
+            usersData = exampleResult,
             detailsState = detailsState,
             userListState = userListState,
-            currentUser = mutableStateOf(currentUser.value!!),
+            currentUser = mutableStateOf(exampleResults),
         )
     }
 }
-*/

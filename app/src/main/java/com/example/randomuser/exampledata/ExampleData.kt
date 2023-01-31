@@ -1,6 +1,7 @@
 package com.example.randomuser.exampledata
 
 import com.example.randomuser.model.*
+import kotlin.Result
 
 var exampleResults = Results(
     "070333",
@@ -14,4 +15,9 @@ var exampleResults = Results(
     "9294924",
     Picture("https://randomuser.me/api/portraits/men/45.jpg", "https://randomuser.me/api/portraits/med/men/45.jpg", "https://randomuser.me/api/portraits/thumb/men/45.jpg"),
     Registered(25, "2020-03-23")
+)
+
+var exampleResult = com.example.randomuser.model.Result(
+    Info(1, 2, "seed", "4"),
+    listOf(exampleResults, exampleResults, exampleResults, exampleResults)
 )
