@@ -28,10 +28,10 @@ class UserViewModel : ViewModel() {
         val users = resultsResponse?.results
         visibleUsers.clear()
 
-        if (selectedFilter.value?.selected == true) {
-            activeFilters.add(selectedFilter.value ?: Filter(""))
-        } else {
-            activeFilters.remove(selectedFilter.value ?: Filter(""))
+        when (selectedFilter.value?.selected) {
+            true -> activeFilters.add(selectedFilter.value ?: Filter(""))
+            false -> activeFilters.remove(selectedFilter.value ?: Filter(""))
+            else -> {}
         }
 
         if (activeFilters.isEmpty()) {
