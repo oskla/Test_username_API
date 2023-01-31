@@ -12,6 +12,6 @@ var exampleResults = Results(
     Login("md5", "password", "salt", "sha1", "sha256", "username", "uuid"),
     Name("First", "Last", "title"), "nat",
     "9294924",
-    Picture("www.image.com", "www.image.com", "www.image.com"),
+    Picture("https://randomuser.me/api/portraits/men/45.jpg", "https://randomuser.me/api/portraits/med/men/45.jpg", "https://randomuser.me/api/portraits/thumb/men/45.jpg"),
     Registered(25, "2020-03-23")
 )
