@@ -82,12 +82,3 @@ fun App(userViewModel: UserViewModel) {
     }
 }
 
-/*@Preview("ComponentPreview (light)", showBackground = true)
-@Preview("ComponentPreview (dark)", uiMode = Configuration.UI_MODE_NIGHT_YES)
-@Preview("ComponentPreview (big font)", fontScale = 1.5f)
-@Preview("ComponentPreview (large screen)", device = Devices.PIXEL_C)
-@Composable
-fun ComponentPreview() {
-   // val userViewModel: UserViewModel()
-    App()
-}*/
