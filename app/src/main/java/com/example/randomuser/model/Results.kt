@@ -16,4 +16,12 @@ data class Results(
     var pageViews: Int = 0
 )
 
+fun addFirstAndLastName(firstName: String, lastName: String): String {
+    return ("$firstName $lastName")
+}
+
+
+
+
+
 

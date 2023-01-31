@@ -19,9 +19,8 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.example.randomuser.data.UserItemData
 import com.example.randomuser.exampledata.exampleResults
-import com.example.randomuser.helpers.addFirstAndLastName
+import com.example.randomuser.model.addFirstAndLastName
 import com.example.randomuser.ui.theme.randomuserTheme
 import androidx.compose.ui.graphics.Color as Color
 import com.example.randomuser.model.Results as Results

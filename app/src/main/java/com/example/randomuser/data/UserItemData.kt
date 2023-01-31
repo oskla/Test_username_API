@@ -29,6 +29,3 @@ var usersData = listOf(
     UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://picsum.photos/200/300", 54, "male", 4)
 )
 
-fun getUserById(id: String): UserItemData {
-    return usersData.first { it.id == id }
-}
