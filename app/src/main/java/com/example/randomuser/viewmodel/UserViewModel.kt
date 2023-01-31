@@ -29,11 +29,11 @@ class UserViewModel : ViewModel() {
         visibleUsers.clear()
 
         if (selectedFilter.value?.selected == true) {
-            activeFilters.add(selectedFilter.value!!)
+            activeFilters.add(selectedFilter.value ?: Filter(""))
         }
 
         if (selectedFilter.value?.selected == false) {
-            activeFilters.remove(selectedFilter.value!!)
+            activeFilters.remove(selectedFilter.value ?: Filter(""))
         }
 
         if (selectedFilter.value?.selected == false && selectedFilter.value?.selected == false) {
