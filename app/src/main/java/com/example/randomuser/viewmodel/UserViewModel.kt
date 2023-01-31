@@ -25,35 +25,25 @@ class UserViewModel : ViewModel() {
     }
 
     fun getFilteredUsers(selectedFilter: MutableState<Filter?>) {
-        val users = resultsResponse?.results
+        val users = resultsResponse?.results ?: return
         visibleUsers.clear()
 
-        when (selectedFilter.value?.selected) {
-            true -> activeFilters.add(selectedFilter.value ?: Filter(""))
-            false -> activeFilters.remove(selectedFilter.value ?: Filter(""))
+        val selectedFilterValue = selectedFilter.value
+
+        when (selectedFilterValue?.selected) {
+            true -> activeFilters.add(selectedFilterValue)
+            false -> activeFilters.remove(selectedFilterValue)
             else -> {}
         }
 
         if (activeFilters.isEmpty()) {
-            if (users != null) {
-                visibleUsers.addAll(users)
-            }
-        }
-
-        for (filter in activeFilters) {
-            if (filter.text == "Male") {
-                val maleUsers = users?.filter { it.gender == "male" }
-                if (maleUsers != null) {
-                    visibleUsers.addAll(maleUsers)
+            visibleUsers.addAll(users)
+        } else {
+            visibleUsers.addAll(
+                users.filter { user ->
+                    activeFilters.any { filter -> user.gender.lowercase() == filter.text.lowercase() }
                 }
-            }
-
-            if (filter.text == "Female") {
-                val femaleUsers = users?.filter { it.gender == "female" }
-                if (femaleUsers != null) {
-                    visibleUsers.addAll(femaleUsers)
-                }
-            }
+            )
         }
     }
 }
