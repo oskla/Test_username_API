@@ -22,8 +22,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.randomuser.R
+import com.example.randomuser.exampledata.exampleResults
 import com.example.randomuser.model.Results
-import com.example.randomuser.model.exampleResults
 import com.example.randomuser.ui.theme.randomuserTheme
 
 @Composable
