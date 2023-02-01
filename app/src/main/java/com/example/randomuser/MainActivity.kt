@@ -49,7 +49,7 @@ fun App(userViewModel: UserViewModel) {
     val currentUser = rememberSaveable { mutableStateOf<Results?>(null) }
 
     val selectedFilter = rememberSaveable { mutableStateOf<Filter?>(null) }
-    val visibleUsers = userViewModel.visibleUsers
+    val visibleUsers = userViewModel.users
     val activeFilters = userViewModel.activeFilters
     Column(
         modifier = Modifier.padding(horizontal = 16.dp)

@@ -13,37 +13,28 @@ import com.example.randomuser.model.Result as Result
 class UserViewModel : ViewModel() {
 
     var resultsResponse: Result? by mutableStateOf(null)
-    var visibleUsers = mutableStateListOf<Results>()
+    var users = mutableStateListOf<Results>()
     var activeFilters = mutableStateListOf<Filter>()
 
     fun setup() {
         viewModelScope.launch(Dispatchers.IO) {
             val response = Repo().fetchAllUsersRetrofit()
             resultsResponse = response
-            visibleUsers.addAll(response.results)
+            users.addAll(response.results)
         }
     }
 
     fun getFilteredUsers(selectedFilter: MutableState<Filter?>) {
-        val users = resultsResponse?.results ?: return
-        visibleUsers.clear()
+        // If filter is deselected
+        if (selectedFilter.value?.selected == false) {
 
-        val selectedFilterValue = selectedFilter.value
 
-        when (selectedFilterValue?.selected) {
-            true -> activeFilters.add(selectedFilterValue)
-            false -> activeFilters.remove(selectedFilterValue)
-            else -> {}
+            resultsResponse?.results?.let { users.addAll(it) }
+            return
         }
 
-        if (activeFilters.isEmpty()) {
-            visibleUsers.addAll(users)
-        } else {
-            visibleUsers.addAll(
-                users.asSequence().filter { user ->
-                    activeFilters.any { filter -> user.gender.lowercase() == filter.text.lowercase() }
-                }
-            )
-        }
+        var filteredUsers = users.filter { it.gender.lowercase() == selectedFilter.value?.text?.lowercase() }
+        users.clear()
+        users.addAll(filteredUsers)
     }
 }
