@@ -10,8 +10,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import com.example.randomuser.helpers.addFirstAndLastName
+import com.example.randomuser.exampledata.exampleResults
 import com.example.randomuser.model.Results
+import com.example.randomuser.model.addFirstAndLastName
+import com.example.randomuser.ui.theme.randomuserTheme
 
 @Composable
 fun DetailsView(
@@ -50,7 +52,6 @@ fun DetailsView(
     }
 }
 
-/*
 @SuppressLint("UnrememberedMutableState")
 @Preview("ComponentPreview (light)", showBackground = true)
 @Preview("ComponentPreview (dark)", uiMode = Configuration.UI_MODE_NIGHT_YES)
@@ -58,9 +59,7 @@ fun DetailsView(
 @Preview("ComponentPreview (large screen)", device = Devices.PIXEL_C)
 @Composable
 fun DetailsPreview() {
-    val currentUser = rememberSaveable { mutableStateOf(UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://randomuser.me/api/portraits/men/57.jpg", 54, "male", 4)) }
     randomuserTheme {
-        DetailsView(onClick = {}, currentUser = mutableStateOf(currentUser.value!!))
+        DetailsView(onClick = {}, currentUser = mutableStateOf(exampleResults))
     }
 }
-*/

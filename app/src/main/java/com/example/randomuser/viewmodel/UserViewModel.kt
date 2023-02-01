@@ -12,76 +12,31 @@ import com.example.randomuser.model.Result as Result
 
 class UserViewModel : ViewModel() {
 
-    var resultsResponse: Result? by mutableStateOf(null)
-    var visibleUsers = mutableStateListOf<Results>()
+    private var resultsResponse: Result? by mutableStateOf(null)
+    var users = mutableStateListOf<Results>()
     var activeFilters = mutableStateListOf<Filter>()
 
     fun setup() {
         viewModelScope.launch(Dispatchers.IO) {
-            val response = Repo().fetchAllUsersRetrofit()
-            resultsResponse = response
-            visibleUsers.addAll(response.results)
+            try {
+                val response = Repo().fetchAllUsersRetrofit()
+                resultsResponse = response
+                users.sortByDescending { it.pageViews }
+            } catch (e: Exception) {
+                println("Error: $e")
+            }
         }
-    }
-
-    fun sortByViews() {
-        visibleUsers.sortByDescending { it.pageViews }
     }
 
     fun getFilteredUsers(selectedFilter: MutableState<Filter?>) {
-        val users = resultsResponse?.results
-        visibleUsers.clear()
-
-        if (selectedFilter.value?.selected == true) {
-            activeFilters.add(selectedFilter.value!!)
-        }
-
+        // If filter is deselected
         if (selectedFilter.value?.selected == false) {
-            activeFilters.remove(selectedFilter.value!!)
-        }
-
-        // if all filter buttons are deselected i think you want to see all of the results.
-        if (selectedFilter.value?.selected == false && selectedFilter.value?.selected == false) {
-            if (users != null) {
-                visibleUsers.addAll(users)
-            }
-        }
-
-        for (filter in activeFilters) {
-            if (filter.text == "Male") {
-                val maleUsers = users?.filter { it.gender == "male" }
-                if (maleUsers != null) {
-                    visibleUsers.addAll(maleUsers)
-                }
-            }
-
-            if (filter.text == "Female") {
-                val femaleUsers = users?.filter { it.gender == "female" }
-                if (femaleUsers != null) {
-                    visibleUsers.addAll(femaleUsers)
-                }
-            }
-        }
-    }
-
-/*    fun filterGender(gender: Filter?) {
-        println(gender)
-        if (gender == "Male") {
-            visibleUsers.clear()
-            visibleUsers = resultsResponse?.results?.filter { it.gender == "male" }!!.toMutableStateList()
-        }
-        if (gender == "Female") {
-            visibleUsers.clear()
-            visibleUsers = resultsResponse?.results?.filter { it.gender == "female" }!!.toMutableStateList()
-
-
-        }
-        if (gender == null) {
+            resultsResponse?.results?.let { users.addAll(it) }
             return
         }
-    }*/
 
-/*    fun setToCurrentUser(user: UserItemData) {
-        currentUser = user
-    }*/
+        val filteredUsers = users.filter { it.gender.lowercase() == selectedFilter.value?.text?.lowercase() }
+        users.clear()
+        users.addAll(filteredUsers)
+    }
 }

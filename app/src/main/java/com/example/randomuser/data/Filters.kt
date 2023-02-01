@@ -1,11 +1,8 @@
 package com.example.randomuser.data
 
-import java.util.UUID
+enum class Filter(val text: String, val selected: Boolean) {
+    Male("Male", false),
+    Female("Female", false)
+}
 
-data class Filter(
-    val text: String,
-    val id: String = UUID.randomUUID().toString(),
-    var selected: Boolean = false
-)
-
-val filters = listOf(Filter("Male"), Filter("Female"))
+val filters = listOf(Filter.Male, Filter.Female)

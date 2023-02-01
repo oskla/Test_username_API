@@ -19,7 +19,9 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.randomuser.R
+import com.example.randomuser.exampledata.exampleResults
 import com.example.randomuser.model.Results
+import com.example.randomuser.ui.theme.randomuserTheme
 
 @Composable
 fun DetailsBox(
@@ -67,7 +69,6 @@ fun DetailsBox(
     }
 }
 
-/*
 @Preview("ComponentPreview (light)", showBackground = true)
 @Preview("ComponentPreview (dark)", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Preview("ComponentPreview (big font)", fontScale = 1.5f)
@@ -75,7 +76,6 @@ fun DetailsBox(
 @Composable
 fun DetailsBoxPreview() {
     randomuserTheme {
-        DetailsBox(userData = UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://randomuser.me/api/portraits/men/57.jpg", 54, "male", 4))
+        DetailsBox(userData = exampleResults)
     }
 }
-*/
