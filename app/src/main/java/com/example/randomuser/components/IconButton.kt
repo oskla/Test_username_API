@@ -30,8 +30,6 @@ fun IconButton(
     filter: Filter,
     activeFilters: SnapshotStateList<Filter>
 ) {
-    // var selected by rememberSaveable { mutableStateOf(false) }
-    // var color by rememberSaveable { mutableStateOf( btnBg )
     val selectedColor = remember { mutableStateOf(btnBg) }
 
     Box(
