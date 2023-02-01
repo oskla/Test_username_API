@@ -1,5 +1,7 @@
 package com.example.randomuser.components
 
+import android.annotation.SuppressLint
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -15,13 +17,14 @@ import com.example.randomuser.data.usersData
 import com.example.randomuser.exampledata.exampleResult
 import com.example.randomuser.exampledata.exampleResults
 import com.example.randomuser.model.Results
+import com.example.randomuser.ui.theme.randomuserTheme
 
 @Composable
 fun UsersList(
     detailsState: MutableState<Boolean>,
     userListState: MutableState<Boolean>,
     currentUser: MutableState<Results?>,
-    usersData: SnapshotStateList<Results?>
+    usersData: Result?
 ) {
     LazyColumn(verticalArrangement = Arrangement.spacedBy(16.dp)) {
 

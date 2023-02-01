@@ -1,6 +1,6 @@
 package com.example.randomuser.data
 
-enum class Filter(val text: String, val selected: Boolean) {
+enum class Filter(val text: String, var selected: Boolean) {
     Male("Male", false),
     Female("Female", false)
 }
