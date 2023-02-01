@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.randomuser.components.DetailsView
@@ -38,46 +37,6 @@ class MainActivity : ComponentActivity() {
                     App(userViewModel)
                 }
             }
-        }
-    }
-}
-
-@Composable
-fun App(userViewModel: UserViewModel) {
-    val usersListVisible = rememberSaveable { mutableStateOf(true) }
-    val detailsViewVisible = rememberSaveable { mutableStateOf(false) }
-    val currentUser = rememberSaveable { mutableStateOf<Results?>(null) }
-
-    val selectedFilter = rememberSaveable { mutableStateOf<Filter?>(null) }
-    val visibleUsers = userViewModel.users
-    val activeFilters = userViewModel.activeFilters
-    Column(
-        modifier = Modifier.padding(horizontal = 16.dp)
-    ) {
-        if (usersListVisible.value) {
-            SearchAndFilter(
-                selectedFilter = selectedFilter,
-                onClickFilter = {
-                    selectedFilter.value?.selected = !selectedFilter.value?.selected!!
-                    userViewModel.getFilteredUsers(selectedFilter)
-                }
-            )
-            UsersList(
-                detailsState = detailsViewVisible,
-                userListState = usersListVisible,
-                currentUser = currentUser,
-                usersData = visibleUsers.toMutableStateList()
-            )
-        }
-
-        if (detailsViewVisible.value) {
-            DetailsView(
-                onClick = {
-                    detailsViewVisible.value = false
-                    usersListVisible.value = true
-                },
-                currentUser = currentUser
-            )
         }
     }
 }

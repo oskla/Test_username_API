@@ -18,6 +18,7 @@ class UserViewModel : ViewModel() {
 
     fun setup() {
         viewModelScope.launch(Dispatchers.IO) {
+
             val response = Repo().fetchAllUsersRetrofit()
             resultsResponse = response
             users.addAll(response.results)
@@ -34,5 +35,6 @@ class UserViewModel : ViewModel() {
         val filteredUsers = users.filter { it.gender.lowercase() == selectedFilter.value?.text?.lowercase() }
         users.clear()
         users.addAll(filteredUsers)
+
     }
 }

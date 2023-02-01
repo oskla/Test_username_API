@@ -1,5 +1,6 @@
 package com.example.randomuser.components
 
+import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -14,7 +15,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.tooling.preview.Devices
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.randomuser.ui.theme.randomuserTheme
 
 @Composable
 fun SquareButton(
@@ -41,5 +45,16 @@ fun SquareButton(
             contentDescription = null,
             tint = iconTint
         )
+    }
+}
+
+@Preview("ComponentPreview (light)", showBackground = true)
+@Preview("ComponentPreview (dark)", uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview("ComponentPreview (big font)", fontScale = 1.5f)
+@Preview("ComponentPreview (large screen)", device = Devices.PIXEL_C)
+@Composable
+fun SquareButtonPreview() {
+    randomuserTheme {
+        SquareButton(onClick = {})
     }
 }

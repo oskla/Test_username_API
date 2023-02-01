@@ -11,14 +11,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.randomuser.data.UserItemData
+import com.example.randomuser.exampledata.exampleResults
 import com.example.randomuser.model.Results
 import com.example.randomuser.ui.theme.randomuserTheme
 
@@ -82,7 +81,6 @@ fun InfoBox(
     }
 }
 
-/*
 @Preview("ComponentPreview (light)", showBackground = true)
 @Preview("ComponentPreview (dark)", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Preview("ComponentPreview (big font)", fontScale = 1.5f)
@@ -90,7 +88,6 @@ fun InfoBox(
 @Composable
 fun DefaultPreview() {
     randomuserTheme {
-        InfoBox(UserItemData("Pelle", "Anderson", "hello@hi.com", "BR", "https://randomuser.me/api/portraits/men/57.jpg", 54, "male", 4), MaterialTheme.colors.onBackground, bgColor = MaterialTheme.colors.surface)
+        InfoBox(userData = exampleResults)
     }
 }
-*/
