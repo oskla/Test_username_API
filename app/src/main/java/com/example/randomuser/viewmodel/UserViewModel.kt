@@ -31,8 +31,15 @@ class UserViewModel : ViewModel() {
     }
 
     fun getFilteredUsers(selectedFilter: MutableState<Filter?>) {
+
+        if (activeFilters.isNotEmpty()) {
+            activeFilters.clear()
+            users.clear()
+            resultsResponse?.results?.let { users.addAll(it) }
+        }
         // If filter is deselected
         if (selectedFilter.value?.selected == false) {
+            users.clear()
             resultsResponse?.results?.let { users.addAll(it) }
             activeFilters.removeAll(filters.filter { it.text == selectedFilter.value?.text })
             sortByViews()
@@ -41,7 +48,7 @@ class UserViewModel : ViewModel() {
 
         val filteredUsers = users.filter { it.gender.lowercase() == selectedFilter.value?.text?.lowercase() }
         activeFilters.addAll(filters.filter { it.text == selectedFilter.value?.text })
-        println("active filters ${activeFilters.first()}")
+        activeFilters.forEach{ println(it.text) }
 
         users.clear()
         users.addAll(filteredUsers)
