@@ -1,5 +1,6 @@
 package com.example.randomuser.exampledata
 
+import androidx.compose.runtime.mutableStateListOf
 import com.example.randomuser.model.*
 import java.util.*
 import kotlin.Result
@@ -20,7 +21,7 @@ var exampleResults = Results(
 
 var exampleResult = com.example.randomuser.model.Result(
     Info(1, 2, "seed", "4"),
-    listOf(exampleResults, exampleResults, exampleResults, exampleResults)
+    mutableStateListOf(exampleResults, exampleResults, exampleResults, exampleResults)
 )
 
 /*// ----- This part is for using local data

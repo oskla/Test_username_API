@@ -1,12 +1,14 @@
 package com.example.randomuser.components
 
 
+import android.annotation.SuppressLint
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Devices
@@ -39,6 +41,7 @@ fun FilterButtons(
 
 
 
+@SuppressLint("UnrememberedMutableState")
 @Preview("ComponentPreview (light)", showBackground = true)
 @Preview("ComponentPreview (dark)", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Preview("ComponentPreview (big font)", fontScale = 1.5f)
@@ -46,6 +49,7 @@ fun FilterButtons(
 @Composable
 fun FiltersPreview() {
     randomuserTheme {
-        FilterButtons()
+        FilterButtons(selectedFilter = mutableStateOf(null), onClickFilter = {})
     }
+}
 

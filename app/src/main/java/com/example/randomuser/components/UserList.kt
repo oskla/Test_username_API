@@ -58,7 +58,7 @@ fun UsersListPreview() {
     val userListState = rememberSaveable { mutableStateOf(true) }
     randomuserTheme {
         UsersList(
-            usersData = mutableStateListOf(exampleResult),
+            usersData = mutableStateListOf(exampleResults),
             detailsState = detailsState,
             userListState = userListState,
             currentUser = mutableStateOf(exampleResults)
