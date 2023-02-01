@@ -10,18 +10,26 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.randomuser.data.Filter
 import com.example.randomuser.data.filters
-import com.example.randomuser.ui.theme.randomuserTheme
 
 @Composable
-fun FilterButtons() {
+fun FilterButtons(
+    selectedFilter: MutableState<Filter?>,
+    onClickFilter: () -> Unit
+) {
     LazyRow(
         modifier = Modifier,
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         itemsIndexed(items = filters) { _, item ->
-            IconButton(btnText = item.text)
+            IconButton(
+                btnText = item.text,
+                selectedFilter = selectedFilter,
+                onClickFilter = onClickFilter,
+                item = item
+            )
         }
     }
 }
@@ -35,4 +43,4 @@ fun FiltersPreview() {
     randomuserTheme {
         FilterButtons()
     }
-}
+
