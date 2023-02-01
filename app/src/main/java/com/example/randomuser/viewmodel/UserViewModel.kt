@@ -22,7 +22,7 @@ class UserViewModel : ViewModel() {
                 val response = Repo().fetchAllUsersRetrofit()
                 resultsResponse = response
                 users.addAll(response.results)
-                users.sortByDescending { it.pageViews }
+                sortByViews()
             } catch (e: Exception) {
                 println("Error: $e")
             }

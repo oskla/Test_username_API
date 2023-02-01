@@ -17,26 +17,32 @@ fun App(userViewModel: UserViewModel) {
     val usersListVisible = rememberSaveable { mutableStateOf(true) }
     val detailsViewVisible = rememberSaveable { mutableStateOf(false) }
     val currentUser = rememberSaveable { mutableStateOf<Results?>(null) }
-    // val sortByViews = userViewModel.sortByViews()
     val selectedFilter = rememberSaveable { mutableStateOf<Filter?>(null) }
     val visibleUsers = userViewModel.users
 
     Column(
         modifier = Modifier.padding(horizontal = 16.dp)
     ) {
-        SearchAndFilter(
-            selectedFilter = selectedFilter,
-            onClickFilter = {
-                selectedFilter.value?.selected = !selectedFilter.value?.selected!!
-                userViewModel.getFilteredUsers(selectedFilter)
-            }
-        )
-        UsersList(
-            detailsState = detailsViewVisible,
-            userListState = usersListVisible,
-            currentUser = currentUser,
-            usersData = visibleUsers.toMutableStateList()
-        )
+
+        if (usersListVisible.value) {
+            SearchAndFilter(
+                selectedFilter = selectedFilter,
+                onClickFilter = {
+                    selectedFilter.value?.selected = !selectedFilter.value?.selected!!
+                    userViewModel.getFilteredUsers(selectedFilter)
+                }
+            )
+        }
+
+        if (usersListVisible.value) {
+            UsersList(
+                detailsState = detailsViewVisible,
+                userListState = usersListVisible,
+                currentUser = currentUser,
+                usersData = visibleUsers.toMutableStateList()
+            )
+        }
+
     }
 
     if (detailsViewVisible.value) {
