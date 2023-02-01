@@ -7,16 +7,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.example.randomuser.data.Filter
 
 @Composable
 fun IconButton(
@@ -26,7 +24,10 @@ fun IconButton(
     btnBgSelected: Color = MaterialTheme.colors.secondaryVariant,
     btnShape: RoundedCornerShape = RoundedCornerShape(4.dp),
     paddingVertical: Dp = 8.dp,
-    paddingHorizontal: Dp = 16.dp
+    paddingHorizontal: Dp = 16.dp,
+    selectedFilter: MutableState<Filter?>,
+    onClickFilter: () -> Unit,
+    item: Filter
 ) {
     var selected by rememberSaveable { mutableStateOf(false) }
 
@@ -36,7 +37,9 @@ fun IconButton(
             .background(if (selected) btnBgSelected else btnBg)
             .padding(horizontal = paddingHorizontal, vertical = paddingVertical)
             .clickable(onClick = {
+                selectedFilter.value = item
                 selected = !selected
+                onClickFilter()
             })
 
     ) {

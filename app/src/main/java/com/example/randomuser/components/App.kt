@@ -21,25 +21,29 @@ fun App(userViewModel: UserViewModel) {
     Column(
         modifier = Modifier.padding(horizontal = 16.dp)
     ) {
-        if (usersListVisible.value) {
-            SearchAndFilter()
-            UsersList(
-                detailsState = detailsViewVisible,
-                userListState = usersListVisible,
-                currentUser = currentUser,
-                usersData = userData
-            )
-        }
+        SearchAndFilter(
+            selectedFilter = selectedFilter,
+            onClickFilter = {
+                selectedFilter.value?.selected = !selectedFilter.value?.selected!!
+                userViewModel.getFilteredUsers(selectedFilter)
+            }
+        )
+        UsersList(
+            detailsState = detailsViewVisible,
+            userListState = usersListVisible,
+            currentUser = currentUser,
+            usersData = visibleUsers.toMutableStateList()
+        )
+    }
 
-        if (detailsViewVisible.value) {
-            DetailsView(
-                onClick = {
-                    detailsViewVisible.value = false
-                    usersListVisible.value = true
-                    println("userviewmodel: ${userData?.results?.first()?.email}")
-                },
-                currentUser = currentUser
-            )
+    if (detailsViewVisible.value) {
+        DetailsView(
+            onClick = {
+                detailsViewVisible.value = false
+                usersListVisible.value = true
+            },
+            currentUser = currentUser
+        )
         }
     }
 }
