@@ -38,7 +38,7 @@ fun SearchBar(
     singleLine: Boolean = true,
     placeHolderText: String = "Search",
     textFieldShape: Shape = RoundedCornerShape(4.dp),
-    onSearchClick: (String) -> Unit
+    onSearchClick: (String) -> Unit = {}
 
 ) {
     var searchText by remember { mutableStateOf(TextFieldValue("")) }

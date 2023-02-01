@@ -1,6 +1,5 @@
 package com.example.randomuser.viewmodel
 
-
 import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,7 +12,6 @@ import com.example.randomuser.model.Result as Result
 
 class UserViewModel : ViewModel() {
 
-
     private var resultsResponse: Result? by mutableStateOf(null)
     var users = mutableStateListOf<Results>()
     var activeFilters = mutableStateListOf<Filter>()
@@ -23,6 +21,7 @@ class UserViewModel : ViewModel() {
             try {
                 val response = Repo().fetchAllUsersRetrofit()
                 resultsResponse = response
+                users.addAll(response.results)
                 users.sortByDescending { it.pageViews }
             } catch (e: Exception) {
                 println("Error: $e")
@@ -44,6 +43,5 @@ class UserViewModel : ViewModel() {
 
     fun sortByViews() {
         users.sortByDescending { it.pageViews }
-
     }
 }
