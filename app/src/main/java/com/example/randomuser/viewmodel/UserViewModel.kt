@@ -27,13 +27,11 @@ class UserViewModel : ViewModel() {
     fun getFilteredUsers(selectedFilter: MutableState<Filter?>) {
         // If filter is deselected
         if (selectedFilter.value?.selected == false) {
-
-
             resultsResponse?.results?.let { users.addAll(it) }
             return
         }
 
-        var filteredUsers = users.filter { it.gender.lowercase() == selectedFilter.value?.text?.lowercase() }
+        val filteredUsers = users.filter { it.gender.lowercase() == selectedFilter.value?.text?.lowercase() }
         users.clear()
         users.addAll(filteredUsers)
     }
