@@ -37,8 +37,7 @@ class UserViewModel : ViewModel() {
             resultsResponse?.results?.let { users.addAll(it) }
             return
         }
-
-        var filteredUsers = users.filter { it.gender.lowercase() == selectedFilter.value?.text?.lowercase() }
+        
         val filteredUsers = users.filter { it.gender.lowercase() == selectedFilter.value?.text?.lowercase() }
         users.clear()
         users.addAll(filteredUsers)
