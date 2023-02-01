@@ -33,7 +33,7 @@ fun FilterButtons(
                 btnText = item.text,
                 selectedFilter = selectedFilter,
                 onClickFilter = onClickFilter,
-                item = item
+                filter = item
             )
         }
     }

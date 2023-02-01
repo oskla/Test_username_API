@@ -48,7 +48,7 @@ fun UserItem(
                 detailsState.value = true
                 userListState.value = false
                 currentUser.value = userData
-                currentUser.value!!.pageViews++
+                currentUser.value?.pageViews = currentUser.value?.pageViews!! + 1
             },
         shape = cardCornerRadius,
         elevation = cardElevation

@@ -5,4 +5,4 @@ enum class Filter(val text: String, var selected: Boolean) {
     Female("Female", false)
 }
 
-val filters = listOf(Filter.Male, Filter.Female)
+var filters = listOf(Filter.Male, Filter.Female)

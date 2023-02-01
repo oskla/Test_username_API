@@ -4,6 +4,7 @@ import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.randomuser.data.Filter
+import com.example.randomuser.data.filters
 import com.example.randomuser.model.Results
 import com.example.randomuser.repo.Repo
 import kotlinx.coroutines.Dispatchers
@@ -33,15 +34,23 @@ class UserViewModel : ViewModel() {
         // If filter is deselected
         if (selectedFilter.value?.selected == false) {
             resultsResponse?.results?.let { users.addAll(it) }
+            activeFilters.removeAll(filters.filter { it.text == selectedFilter.value?.text })
+            sortByViews()
             return
         }
 
         val filteredUsers = users.filter { it.gender.lowercase() == selectedFilter.value?.text?.lowercase() }
+        activeFilters.addAll(filters.filter { it.text == selectedFilter.value?.text })
+        println("active filters ${activeFilters.first()}")
+
         users.clear()
         users.addAll(filteredUsers)
+
+        sortByViews()
     }
 
     fun sortByViews() {
         users.sortByDescending { it.pageViews }
+        users.sortBy { it.name.first }
     }
 }

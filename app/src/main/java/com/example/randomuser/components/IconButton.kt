@@ -27,7 +27,7 @@ fun IconButton(
     paddingHorizontal: Dp = 16.dp,
     selectedFilter: MutableState<Filter?>,
     onClickFilter: () -> Unit,
-    item: Filter
+    filter: Filter
 ) {
     var selected by rememberSaveable { mutableStateOf(false) }
 
@@ -37,7 +37,7 @@ fun IconButton(
             .background(if (selected) btnBgSelected else btnBg)
             .padding(horizontal = paddingHorizontal, vertical = paddingVertical)
             .clickable(onClick = {
-                selectedFilter.value = item
+                selectedFilter.value = filter
                 selected = !selected
                 onClickFilter()
             })
