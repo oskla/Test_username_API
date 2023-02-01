@@ -10,6 +10,7 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.randomuser.components.App
 import com.example.randomuser.components.DetailsView
 import com.example.randomuser.components.SearchAndFilter
 import com.example.randomuser.components.UsersList
