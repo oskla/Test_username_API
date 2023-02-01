@@ -4,7 +4,6 @@ import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.randomuser.data.Filter
-import com.example.randomuser.data.UserItemData
 import com.example.randomuser.model.Results
 import com.example.randomuser.repo.Repo
 import kotlinx.coroutines.Dispatchers
@@ -35,11 +34,9 @@ class UserViewModel : ViewModel() {
             resultsResponse?.results?.let { users.addAll(it) }
             return
         }
-        
+
         val filteredUsers = users.filter { it.gender.lowercase() == selectedFilter.value?.text?.lowercase() }
         users.clear()
         users.addAll(filteredUsers)
     }
-}
-
 }
