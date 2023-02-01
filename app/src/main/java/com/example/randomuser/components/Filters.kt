@@ -1,15 +1,11 @@
 package com.example.randomuser.components
 
-
 import android.annotation.SuppressLint
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,12 +22,16 @@ fun FilterButtons(
     onClickFilter: () -> Unit,
     activeFilters: SnapshotStateList<Filter>
 ) {
+
+   // val activeFilter = activeFilters.find { it.selected }
+
     LazyRow(
         modifier = Modifier,
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         itemsIndexed(items = filters) { _, item ->
+
             IconButton(
                 btnText = item.text,
                 selectedFilter = selectedFilter,
@@ -42,8 +42,6 @@ fun FilterButtons(
         }
     }
 }
-
-
 
 @SuppressLint("UnrememberedMutableState")
 @Preview("ComponentPreview (light)", showBackground = true)
@@ -56,4 +54,3 @@ fun FiltersPreview() {
         FilterButtons(selectedFilter = mutableStateOf(null), onClickFilter = {}, activeFilters = mutableStateListOf())
     }
 }
-

@@ -47,8 +47,6 @@ class UserViewModel : ViewModel() {
 
         val filteredUsers = users.filter { it.gender.lowercase() == selectedFilter.value?.text?.lowercase() }
         activeFilters.addAll(filters.filter { it.text == selectedFilter.value?.text })
-        activeFilters.forEach { println(it.text) }
-
         users.clear()
         users.addAll(filteredUsers)
 
@@ -57,6 +55,5 @@ class UserViewModel : ViewModel() {
 
     fun sortByViews() {
         users.sortByDescending { it.pageViews }
-        users.sortBy { it.name.first }
     }
 }

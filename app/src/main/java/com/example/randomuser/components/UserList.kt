@@ -24,7 +24,7 @@ fun UsersList(
     detailsState: MutableState<Boolean>,
     userListState: MutableState<Boolean>,
     currentUser: MutableState<Results?>,
-    usersData: SnapshotStateList<Results?>
+    usersData: MutableList<Results?>
 ) {
     LazyColumn(verticalArrangement = Arrangement.spacedBy(16.dp)) {
         itemsIndexed(items = usersData) { _, item ->

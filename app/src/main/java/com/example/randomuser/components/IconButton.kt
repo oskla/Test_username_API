@@ -28,7 +28,8 @@ fun IconButton(
     selectedFilter: MutableState<Filter?>,
     onClickFilter: () -> Unit,
     filter: Filter,
-    activeFilters: SnapshotStateList<Filter>
+    activeFilters: SnapshotStateList<Filter>,
+
 ) {
     val selectedColor = remember { mutableStateOf(btnBg) }
 
@@ -38,6 +39,7 @@ fun IconButton(
             .background(selectedColor.value)
             .padding(horizontal = paddingHorizontal, vertical = paddingVertical)
             .clickable(onClick = {
+
                 // Set the selected filter to this one
                 selectedFilter.value = filter
 
@@ -51,6 +53,10 @@ fun IconButton(
                 } else {
                     selectedColor.value = btnBg
                 }
+
+          /*      if (oneFilterSelected) {
+                    selectedColor.value = btnBg
+                }*/
 
                 onClickFilter()
             })
