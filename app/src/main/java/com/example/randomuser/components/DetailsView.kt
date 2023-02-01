@@ -15,6 +15,7 @@ import com.example.randomuser.model.Results
 import com.example.randomuser.model.addFirstAndLastName
 import com.example.randomuser.ui.theme.randomuserTheme
 
+
 @Composable
 fun DetailsView(
     onClick: () -> Unit,
