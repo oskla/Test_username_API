@@ -12,7 +12,7 @@ import com.example.randomuser.model.Result as Result
 
 class UserViewModel : ViewModel() {
 
-    var resultsResponse: Result? by mutableStateOf(null)
+    private var resultsResponse: Result? by mutableStateOf(null)
     var users = mutableStateListOf<Results>()
     var activeFilters = mutableStateListOf<Filter>()
 
