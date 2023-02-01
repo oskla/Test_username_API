@@ -76,8 +76,6 @@ fun SearchBar(
 @Composable
 fun SearchBarPreview() {
     randomuserTheme {
-        // SearchBar()
-        // SquareButton()
         SearchView()
     }
 }

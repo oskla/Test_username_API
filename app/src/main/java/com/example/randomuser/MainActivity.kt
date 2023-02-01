@@ -8,14 +8,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import com.example.randomuser.components.DetailsView
-import com.example.randomuser.components.SearchAndFilter
-import com.example.randomuser.components.UsersList
-import com.example.randomuser.data.Filter
-import com.example.randomuser.model.Results
+import com.example.randomuser.components.App
 import com.example.randomuser.ui.theme.randomuserTheme
 import com.example.randomuser.viewmodel.UserViewModel
 
@@ -38,47 +32,6 @@ class MainActivity : ComponentActivity() {
                     App(userViewModel)
                 }
             }
-        }
-    }
-}
-
-@Composable
-fun App(userViewModel: UserViewModel) {
-    val usersListVisible = rememberSaveable { mutableStateOf(true) }
-    val detailsViewVisible = rememberSaveable { mutableStateOf(false) }
-    val currentUser = rememberSaveable { mutableStateOf<Results?>(null) }
-
-    val selectedFilter = rememberSaveable { mutableStateOf<Filter?>(null) }
-    val visibleUsers = userViewModel.visibleUsers
-
-    Column(
-        modifier = Modifier.padding(horizontal = 16.dp)
-    ) {
-        if (usersListVisible.value) {
-            SearchAndFilter(
-                selectedFilter = selectedFilter,
-                onClickFilter = {
-                    selectedFilter.value?.selected = !selectedFilter.value?.selected!!
-                    userViewModel.getFilteredUsers(selectedFilter)
-                }
-            )
-            UsersList(
-                detailsState = detailsViewVisible,
-                userListState = usersListVisible,
-                currentUser = currentUser,
-                usersData = visibleUsers.toMutableStateList()
-            )
-        }
-
-        if (detailsViewVisible.value) {
-            DetailsView(
-                onClick = {
-                    detailsViewVisible.value = false
-                    usersListVisible.value = true
-                    userViewModel.sortByViews()
-                },
-                currentUser = currentUser
-            )
         }
     }
 }

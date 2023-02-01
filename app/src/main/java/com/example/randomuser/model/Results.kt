@@ -15,3 +15,13 @@ data class Results(
     val registered: Registered,
     var pageViews: Int = 0
 )
+
+fun addFirstAndLastName(firstName: String, lastName: String): String {
+    return ("$firstName $lastName")
+}
+
+
+
+
+
+
