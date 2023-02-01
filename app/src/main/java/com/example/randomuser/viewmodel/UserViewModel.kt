@@ -1,5 +1,6 @@
 package com.example.randomuser.viewmodel
 
+
 import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,6 +12,7 @@ import kotlinx.coroutines.launch
 import com.example.randomuser.model.Result as Result
 
 class UserViewModel : ViewModel() {
+
 
     private var resultsResponse: Result? by mutableStateOf(null)
     var users = mutableStateListOf<Results>()
@@ -38,5 +40,6 @@ class UserViewModel : ViewModel() {
         val filteredUsers = users.filter { it.gender.lowercase() == selectedFilter.value?.text?.lowercase() }
         users.clear()
         users.addAll(filteredUsers)
+
     }
 }

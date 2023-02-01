@@ -1,5 +1,6 @@
 package com.example.randomuser.components
 
+
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -35,6 +36,8 @@ fun FilterButtons(
 }
 
 
+
+@Preview("ComponentPreview (light)", showBackground = true)
 @Preview("ComponentPreview (dark)", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Preview("ComponentPreview (big font)", fontScale = 1.5f)
 @Preview("ComponentPreview (large screen)", device = Devices.PIXEL_C)
