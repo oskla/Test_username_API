@@ -9,7 +9,12 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import com.example.randomuser.components.App
+import androidx.compose.ui.unit.dp
+import com.example.randomuser.components.DetailsView
+import com.example.randomuser.components.SearchAndFilter
+import com.example.randomuser.components.UsersList
+import com.example.randomuser.data.Filter
+import com.example.randomuser.model.Results
 import com.example.randomuser.ui.theme.randomuserTheme
 import com.example.randomuser.viewmodel.UserViewModel
 
@@ -36,13 +41,3 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-
-/*@Preview("ComponentPreview (light)", showBackground = true)
-@Preview("ComponentPreview (dark)", uiMode = Configuration.UI_MODE_NIGHT_YES)
-@Preview("ComponentPreview (big font)", fontScale = 1.5f)
-@Preview("ComponentPreview (large screen)", device = Devices.PIXEL_C)
-@Composable
-fun ComponentPreview() {
-   // val userViewModel: UserViewModel()
-    App()
-}*/

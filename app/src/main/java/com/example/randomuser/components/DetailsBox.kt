@@ -23,6 +23,7 @@ import com.example.randomuser.exampledata.exampleResults
 import com.example.randomuser.model.Results
 import com.example.randomuser.ui.theme.randomuserTheme
 
+
 @Composable
 fun DetailsBox(
     userData: Results,
