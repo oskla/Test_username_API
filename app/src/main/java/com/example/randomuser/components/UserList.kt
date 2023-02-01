@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -24,21 +25,23 @@ fun UsersList(
     detailsState: MutableState<Boolean>,
     userListState: MutableState<Boolean>,
     currentUser: MutableState<Results?>,
-    usersData: Result?
+    usersData: SnapshotStateList<Results?>
 ) {
     LazyColumn(verticalArrangement = Arrangement.spacedBy(16.dp)) {
 
         if (usersData != null) {
-            itemsIndexed(items = usersData.results) { _, item ->
+            itemsIndexed(items = usersData) { _, item ->
 
-                UserItem(
-                    userData = item,
-                    cardHeight = 250.dp,
-                    cardPaddingHorizontal = 0.dp,
-                    detailsState = detailsState,
-                    userListState = userListState,
-                    currentUser = currentUser
-                )
+                if (item != null) {
+                    UserItem(
+                        userData = item,
+                        cardHeight = 250.dp,
+                        cardPaddingHorizontal = 0.dp,
+                        detailsState = detailsState,
+                        userListState = userListState,
+                        currentUser = currentUser
+                    )
+                }
             }
         }
     }
@@ -55,7 +58,7 @@ fun UsersListPreview() {
     val userListState = rememberSaveable { mutableStateOf(true) }
     randomuserTheme {
         UsersList(
-            usersData = exampleResult,
+            usersData = mutableStateListOf(exampleResult),
             detailsState = detailsState,
             userListState = userListState,
             currentUser = mutableStateOf(exampleResults)

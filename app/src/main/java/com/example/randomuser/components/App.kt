@@ -19,7 +19,7 @@ fun App(userViewModel: UserViewModel) {
     val usersListVisible = rememberSaveable { mutableStateOf(true) }
     val detailsViewVisible = rememberSaveable { mutableStateOf(false) }
     val currentUser = rememberSaveable { mutableStateOf<Results?>(null) }
-    val sortByViews = userViewModel.sortByViews()
+    //val sortByViews = userViewModel.sortByViews()
     val selectedFilter = rememberSaveable { mutableStateOf<Filter?>(null) }
     val visibleUsers = userViewModel.users
 
@@ -36,6 +36,7 @@ fun App(userViewModel: UserViewModel) {
         UsersList(
             detailsState = detailsViewVisible,
             userListState = usersListVisible,
+            currentUser = currentUser,
             usersData = visibleUsers.toMutableStateList()
         )
     }
