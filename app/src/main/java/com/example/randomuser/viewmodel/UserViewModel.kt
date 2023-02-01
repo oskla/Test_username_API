@@ -31,7 +31,6 @@ class UserViewModel : ViewModel() {
     }
 
     fun getFilteredUsers(selectedFilter: MutableState<Filter?>) {
-
         if (activeFilters.isNotEmpty()) {
             activeFilters.clear()
             users.clear()
@@ -48,7 +47,7 @@ class UserViewModel : ViewModel() {
 
         val filteredUsers = users.filter { it.gender.lowercase() == selectedFilter.value?.text?.lowercase() }
         activeFilters.addAll(filters.filter { it.text == selectedFilter.value?.text })
-        activeFilters.forEach{ println(it.text) }
+        activeFilters.forEach { println(it.text) }
 
         users.clear()
         users.addAll(filteredUsers)

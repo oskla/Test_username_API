@@ -28,9 +28,10 @@ fun App(userViewModel: UserViewModel) {
             SearchAndFilter(
                 selectedFilter = selectedFilter,
                 onClickFilter = {
-                    selectedFilter.value?.selected = !selectedFilter.value?.selected!!
+
                     userViewModel.getFilteredUsers(selectedFilter)
-                }
+                },
+                activeFilters = activeFilters
             )
         }
 

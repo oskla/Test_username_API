@@ -34,7 +34,6 @@ fun ImageCardBG(
         contentScale = contentScale,
         modifier = Modifier
             .clip(clipPictureShape),
-        placeholder = painterResource(id = R.drawable.banana)
     )
 }
 

@@ -8,7 +8,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -27,18 +27,33 @@ fun IconButton(
     paddingHorizontal: Dp = 16.dp,
     selectedFilter: MutableState<Filter?>,
     onClickFilter: () -> Unit,
-    filter: Filter
+    filter: Filter,
+    activeFilters: SnapshotStateList<Filter>
 ) {
-    var selected by rememberSaveable { mutableStateOf(false) }
+    // var selected by rememberSaveable { mutableStateOf(false) }
+    // var color by rememberSaveable { mutableStateOf( btnBg )
+    val selectedColor = remember { mutableStateOf(btnBg) }
 
     Box(
         modifier = Modifier
             .clip(shape = btnShape)
-            .background(if (selected) btnBgSelected else btnBg)
+            .background(selectedColor.value)
             .padding(horizontal = paddingHorizontal, vertical = paddingVertical)
             .clickable(onClick = {
+                // Set the selected filter to this one
                 selectedFilter.value = filter
-                selected = !selected
+
+                // If it's not selected, set it to selected and vice versa
+                selectedFilter.value?.let { it.selected = !it.selected }
+
+                // If selected - set bg to orange
+                // if not - set bg to gray
+                if (selectedFilter.value?.selected == true) {
+                    selectedColor.value = btnBgSelected
+                } else {
+                    selectedColor.value = btnBg
+                }
+
                 onClickFilter()
             })
 

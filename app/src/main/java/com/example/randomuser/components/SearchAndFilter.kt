@@ -3,6 +3,7 @@ package com.example.randomuser.components
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -12,13 +13,14 @@ import com.example.randomuser.data.Filter
 fun SearchAndFilter(
     verticalPadding: Dp = 16.dp,
     selectedFilter: MutableState<Filter?>,
-    onClickFilter: () -> Unit
+    onClickFilter: () -> Unit,
+    activeFilters: SnapshotStateList<Filter>
 ) {
     Column(
         verticalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier.padding(vertical = verticalPadding)
     ) {
-        FilterButtons(selectedFilter = selectedFilter, onClickFilter = onClickFilter)
+        FilterButtons(selectedFilter = selectedFilter, onClickFilter = onClickFilter, activeFilters = activeFilters)
         Spacer(modifier = Modifier.height(verticalPadding))
         SearchView()
     }
