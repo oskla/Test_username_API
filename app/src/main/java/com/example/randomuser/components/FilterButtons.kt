@@ -1,12 +1,14 @@
+/*
 package com.example.randomuser.components
 
 import android.annotation.SuppressLint
 import android.content.res.Configuration
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -18,20 +20,23 @@ fun FilterButtons(
     verticalPadding: Dp = 16.dp,
     onClickFilterAll: () -> Unit,
     onClickFilterFemale: () -> Unit,
-    onClickFilterMale: () -> Unit
+    onClickFilterMale: () -> Unit,
+    bgColorMale: Color = MaterialTheme.colors.secondary,
+    bgColorFemale: Color = MaterialTheme.colors.secondary,
+    bgColorAll: Color = MaterialTheme.colors.secondary
 ) {
     Column(
         verticalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier.padding(vertical = 16.dp)
     ) {
         Row() {
-            Button(onClick = onClickFilterAll) {
+            Button(onClick = onClickFilterAll, colors = ButtonDefaults.buttonColors(backgroundColor = bgColorAll)) {
                 Text(text = "All")
             }
-            Button(onClick = onClickFilterFemale) {
+            Button(onClick = onClickFilterFemale, colors = ButtonDefaults.buttonColors(backgroundColor = bgColorFemale)) {
                 Text(text = "Female")
             }
-            Button(onClick = onClickFilterMale) {
+            Button(onClick = onClickFilterMale, colors = ButtonDefaults.buttonColors(backgroundColor = bgColorMale)) {
                 Text(text = "Male")
             }
         }
@@ -49,3 +54,4 @@ fun SearchAndFilterPreview() {
         FilterButtons(onClickFilterAll = {}, onClickFilterFemale = {}, onClickFilterMale = {})
     }
 }
+*/
