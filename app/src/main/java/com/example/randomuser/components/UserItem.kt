@@ -10,7 +10,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
@@ -36,22 +35,16 @@ fun UserItem(
     infoBoxTextColor: Color = MaterialTheme.colors.onBackground,
     onClick: () -> Unit
 
-
 ) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .height(cardHeight)
             .padding(horizontal = cardPaddingHorizontal)
-            .clickable (onClick = {
+            .clickable(onClick = {
                 onClick()
                 userData.pageViews++
-            })
-               /* detailsState.value = true
-                userListState.value = false
-                currentUser.value = userData
-                currentUser.value?.pageViews = currentUser.value?.pageViews!! + 1*/
-            ,
+            }),
         shape = cardCornerRadius,
         elevation = cardElevation
     ) {

@@ -101,17 +101,26 @@ fun FilterButtons(
 ) {
     Column(
         verticalArrangement = Arrangement.SpaceBetween,
-        modifier = Modifier.padding(vertical = 16.dp)
+        modifier = Modifier.padding(vertical = verticalPadding)
     ) {
         Row() {
-            Button(onClick = onClickFilterAll, colors = ButtonDefaults.buttonColors(backgroundColor = bgColorAll)) {
-                Text(text = "All")
+            Button(
+                onClick = onClickFilterAll,
+                colors = ButtonDefaults.buttonColors(backgroundColor = bgColorAll)
+            ) {
+                Text(text = Filter.All.text)
             }
-            Button(onClick = onClickFilterFemale, colors = ButtonDefaults.buttonColors(backgroundColor = bgColorFemale)) {
-                Text(text = "Female")
+            Button(
+                onClick = onClickFilterFemale,
+                colors = ButtonDefaults.buttonColors(backgroundColor = bgColorFemale)
+            ) {
+                Text(text = Filter.Female.text)
             }
-            Button(onClick = onClickFilterMale, colors = ButtonDefaults.buttonColors(backgroundColor = bgColorMale)) {
-                Text(text = "Male")
+            Button(
+                onClick = onClickFilterMale,
+                colors = ButtonDefaults.buttonColors(backgroundColor = bgColorMale)
+            ) {
+                Text(text = Filter.Male.text)
             }
         }
     }
