@@ -27,7 +27,7 @@ import com.example.randomuser.model.Results as Results
 
 @Composable
 fun UserItem(
-    userData: Results,
+    userData: Results, // Make mutable?
     cardHeight: Dp,
     cardPaddingHorizontal: Dp,
     cardCornerRadius: RoundedCornerShape = RoundedCornerShape(12.dp, 12.dp, 12.dp, 12.dp),

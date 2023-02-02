@@ -17,7 +17,7 @@ import com.example.randomuser.data.filters
 import com.example.randomuser.ui.theme.randomuserTheme
 
 @Composable
-fun FilterButtons(
+fun Filters(
     selectedFilter: MutableState<Filter?>,
     onClickFilter: () -> Unit,
     activeFilters: SnapshotStateList<Filter>
@@ -51,6 +51,6 @@ fun FilterButtons(
 @Composable
 fun FiltersPreview() {
     randomuserTheme {
-        FilterButtons(selectedFilter = mutableStateOf(null), onClickFilter = {}, activeFilters = mutableStateListOf())
+        Filters(selectedFilter = mutableStateOf(null), onClickFilter = {}, activeFilters = mutableStateListOf())
     }
 }

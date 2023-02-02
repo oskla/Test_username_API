@@ -7,15 +7,8 @@ import androidx.activity.viewModels
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import com.example.randomuser.components.App
-import com.example.randomuser.components.DetailsView
-import com.example.randomuser.components.SearchAndFilter
-import com.example.randomuser.components.UsersList
-import com.example.randomuser.data.Filter
-import com.example.randomuser.model.Results
 import com.example.randomuser.ui.theme.randomuserTheme
 import com.example.randomuser.viewmodel.UserViewModel
 
