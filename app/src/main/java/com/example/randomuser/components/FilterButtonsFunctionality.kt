@@ -1,10 +1,9 @@
 package com.example.randomuser.components
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
+import android.content.res.Configuration
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
@@ -12,10 +11,13 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Devices
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.randomuser.data.Filter
 import com.example.randomuser.model.Results
+import com.example.randomuser.ui.theme.randomuserTheme
 
 @SuppressLint("UnrememberedMutableState")
 @Composable
@@ -36,11 +38,14 @@ fun FilterButtonsFunctionality(
         bgColorFemale = bgColorFemale.value,
         bgColorMale = bgColorMale.value,
         onClickFilterAll = {
-            onClickAll()
+            onClickAll() // Performing functionality from App()
+
+            // Set FilterStatus
             Filter.All.selected = true
             Filter.Female.selected = false
             Filter.Male.selected = false
 
+            // Color modification on buttons
             if (Filter.All.selected) {
                 bgColorAll.value = bgColorSelected
                 bgColorMale.value = bgColorNotSelected
@@ -48,9 +53,11 @@ fun FilterButtonsFunctionality(
             }
         },
         onClickFilterFemale = {
+            // Set FilterStatus
             Filter.Female.selected = !Filter.Female.selected
             Filter.Male.selected = false
 
+            // Color modification on buttons
             if (Filter.Female.selected) {
                 bgColorFemale.value = bgColorSelected
                 bgColorMale.value = bgColorNotSelected
@@ -59,18 +66,21 @@ fun FilterButtonsFunctionality(
                 bgColorFemale.value = bgColorNotSelected
             }
 
+            // Perform filtering
             val filteredUsers = if (Filter.Female.selected) {
                 visibleUsers.filter { it.gender.lowercase() == "female" }.toMutableStateList()
             } else {
                 visibleUsers.filter { it.gender.isNotBlank() }.toMutableStateList()
             }
 
-            onClickFemale(filteredUsers)
+            onClickFemale(filteredUsers) // Functionality from App()
         },
         onClickFilterMale = {
+            // Set FilterStatus
             Filter.Male.selected = !Filter.Male.selected
             Filter.Female.selected = false
 
+            // Color modification on buttons
             if (Filter.Male.selected) {
                 bgColorMale.value = bgColorSelected
                 bgColorFemale.value = bgColorNotSelected
@@ -78,13 +88,13 @@ fun FilterButtonsFunctionality(
             } else {
                 bgColorMale.value = bgColorNotSelected
             }
-
+            // Perform filtering
             val filteredUsers = if (Filter.Male.selected) {
                 visibleUsers.filter { it.gender.lowercase() == "male" }.toMutableStateList()
             } else {
                 visibleUsers.filter { it.gender.isNotBlank() }.toMutableStateList()
             }
-            onClickMale(filteredUsers)
+            onClickMale(filteredUsers) // Functionality from App()
         }
     )
 }
@@ -100,10 +110,12 @@ fun FilterButtons(
     bgColorAll: Color
 ) {
     Column(
-        verticalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier.padding(vertical = verticalPadding)
     ) {
-        Row() {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
             Button(
                 onClick = onClickFilterAll,
                 colors = ButtonDefaults.buttonColors(backgroundColor = bgColorAll)
@@ -125,3 +137,16 @@ fun FilterButtons(
         }
     }
 }
+
+@SuppressLint("UnrememberedMutableState")
+@Preview("ComponentPreview (light)", showBackground = true)
+@Preview("ComponentPreview (dark)", uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview("ComponentPreview (big font)", fontScale = 1.5f)
+@Preview("ComponentPreview (large screen)", device = Devices.PIXEL_C)
+@Composable
+fun SearchAndFilterPreview() {
+    randomuserTheme {
+        FilterButtons(onClickFilterAll = {}, onClickFilterFemale = {}, onClickFilterMale = {}, bgColorFemale = MaterialTheme.colors.secondary, bgColorAll = MaterialTheme.colors.secondary, bgColorMale = MaterialTheme.colors.secondary)
+    }
+}
+
