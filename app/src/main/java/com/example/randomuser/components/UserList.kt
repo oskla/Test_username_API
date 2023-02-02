@@ -34,9 +34,7 @@ fun UsersList(
                     userData = item,
                     cardHeight = 250.dp,
                     cardPaddingHorizontal = 0.dp,
-                    detailsState = detailsState,
-                    userListState = userListState,
-                    currentUser = currentUser
+                   onClick = {}
                 )
             }
         }

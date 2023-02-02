@@ -32,11 +32,10 @@ fun UserItem(
     cardPaddingHorizontal: Dp,
     cardCornerRadius: RoundedCornerShape = RoundedCornerShape(12.dp, 12.dp, 12.dp, 12.dp),
     cardElevation: Dp = 4.dp,
-    detailsState: MutableState<Boolean>,
-    userListState: MutableState<Boolean>,
     infoBoxBgColor: Color = MaterialTheme.colors.surface,
     infoBoxTextColor: Color = MaterialTheme.colors.onBackground,
-    currentUser: MutableState<Results?>
+    onClick: () -> Unit
+
 
 ) {
     Card(
@@ -44,12 +43,15 @@ fun UserItem(
             .fillMaxWidth()
             .height(cardHeight)
             .padding(horizontal = cardPaddingHorizontal)
-            .clickable {
-                detailsState.value = true
+            .clickable (onClick = {
+                onClick()
+                userData.pageViews++
+            })
+               /* detailsState.value = true
                 userListState.value = false
                 currentUser.value = userData
-                currentUser.value?.pageViews = currentUser.value?.pageViews!! + 1
-            },
+                currentUser.value?.pageViews = currentUser.value?.pageViews!! + 1*/
+            ,
         shape = cardCornerRadius,
         elevation = cardElevation
     ) {
@@ -77,9 +79,7 @@ fun ItemPreview() {
             userData = exampleResults,
             cardHeight = 250.dp,
             cardPaddingHorizontal = 16.dp,
-            detailsState = detailsState,
-            userListState = userListState,
-            currentUser = mutableStateOf(exampleResults)
+            onClick = {}
         )
     }
 }

@@ -21,11 +21,9 @@ import com.example.randomuser.ui.theme.randomuserTheme
 @Composable
 fun SearchAndFilter(
     verticalPadding: Dp = 16.dp,
-    selectedFilter: MutableState<Filter?>,
     onClickFilter1: () -> Unit,
     onClickFilter2: () -> Unit,
     onClickFilter3: () -> Unit,
-    activeFilters: SnapshotStateList<Filter>
 ) {
     Column(
         verticalArrangement = Arrangement.SpaceBetween,
@@ -57,6 +55,6 @@ fun SearchAndFilter(
 @Composable
 fun SearchAndFilterPreview() {
     randomuserTheme {
-        SearchAndFilter(selectedFilter = mutableStateOf(null), onClickFilter1 = {}, onClickFilter2 = {}, onClickFilter3 = {}, activeFilters = mutableStateListOf())
+        SearchAndFilter(onClickFilter1 = {}, onClickFilter2 = {}, onClickFilter3 = {})
     }
 }
