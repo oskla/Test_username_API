@@ -14,8 +14,8 @@ import com.example.randomuser.viewmodel.UserViewModel
 
 class MainActivity : ComponentActivity() {
 
-    // TODO - migrate to M3
-    // TODO - Move visibility-state out from UserItem component
+
+    // TODO - Try adding data to Filter-class
 
     private val userViewModel by viewModels<UserViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {

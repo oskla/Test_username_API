@@ -2,7 +2,6 @@ package com.example.randomuser.components
 
 import android.annotation.SuppressLint
 import android.content.res.Configuration
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
@@ -38,8 +37,6 @@ fun FilterButtonsFunctionality(
         bgColorFemale = bgColorFemale.value,
         bgColorMale = bgColorMale.value,
         onClickFilterAll = {
-            onClickAll() // Performing functionality from App()
-
             // Set FilterStatus
             Filter.All.selected = true
             Filter.Female.selected = false
@@ -51,6 +48,8 @@ fun FilterButtonsFunctionality(
                 bgColorMale.value = bgColorNotSelected
                 bgColorFemale.value = bgColorNotSelected
             }
+
+            onClickAll() // Performing functionality from App()
         },
         onClickFilterFemale = {
             // Set FilterStatus
@@ -149,4 +148,3 @@ fun SearchAndFilterPreview() {
         FilterButtons(onClickFilterAll = {}, onClickFilterFemale = {}, onClickFilterMale = {}, bgColorFemale = MaterialTheme.colors.secondary, bgColorAll = MaterialTheme.colors.secondary, bgColorMale = MaterialTheme.colors.secondary)
     }
 }
-
